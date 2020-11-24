@@ -1,0 +1,10 @@
+@font-face {
+    font-family: 'neo_eulermedium';
+    src: url('euler-webfont.eot');
+    src: url('euler-webfont.eot?#iefix') format('embedded-opentype'),
+         url('euler-webfont.woff') format('woff'),
+         url('euler-webfont.ttf') format('truetype'),
+         url('euler-webfont.svg#neo_eulermedium') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}

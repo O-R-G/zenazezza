@@ -1,0 +1,10 @@
+@font-face {
+    font-family: 'palatinoroman';
+    src: url('palatino-roman-webfont.eot');
+    src: url('palatino-roman-webfont.eot?#iefix') format('embedded-opentype'),
+         url('palatino-roman-webfont.woff') format('woff'),
+         url('palatino-roman-webfont.ttf') format('truetype'),
+         url('palatino-roman-webfont.svg#palatinoroman') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}

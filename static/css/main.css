@@ -12,11 +12,12 @@ body {
 	margin: 0;
 	width: 100%;
 	height: 100%;
-	font-family: sf-text, Helvetica, Arial, sans-serif;
-	font-size: 18px;
-	line-height: 22px;	
+	font-family: "optimaroman", "Times New Roman", Times, serif; 
+    font-size: 15.5px;
+    line-height: 18px;
 	-webkit-font-smoothing: subpixel-antialiased;
 	-webkit-text-size-adjust: 100%;
+    padding: 20px;
 }
 
 p {
@@ -25,26 +26,41 @@ p {
 
 img, video {
 	width: 100%;
-	padding: 1em;
-  	filter: grayscale(100%);
+	/*padding: 1em;*/
+  	/*filter: grayscale(100%);*/
 }
 
 canvas {
     /* border: 5px solid red; */
 }
 
-a:link,
+a:link {    
+    color: #FC0; 
+    text-decoration: none; 
+}
+
 a:visited {
-    color: #00F;
-    text-decoration: none;
+    color: #FC0; 
+    text-decoration: none; 
 }
 
 a:hover {
-    color: #000;
+    color: #000; 
+    text-decoration: none; 
+}
+    
+a:active { 
+    color: #FFF; 
+    text-decoration: none;  
 }
 
-a:active {
-	color:#FFF;
+a.reverse
+{
+    color: #000;
+}
+a.reverse:hover
+{
+    color: #FC0;
 }
 
 header {
@@ -58,13 +74,17 @@ header.homepage {
 
 ul {
 	list-style-type: none;
-	padding-left: 1em;
+	padding-left: 0;
 	margin: 0px;
 }
 
-ul:first-child {
-	padding-left: 0px;
+ul > ul > ul{
+    padding-left: 20px;
 }
+
+/*ul:first-child {
+	padding-left: 0px;
+}*/
 
 blockquote {
     font-family: sf-mono, monaco, courier, monospace;
@@ -76,10 +96,15 @@ blockquote {
 /* ids */
 
 #menu {
-	padding-bottom: 1em;
+    position: fixed;
+    z-index: 100;
+    left: 30px;
+    top: 100px;
+	/*padding-bottom: 1em;*/
 }
 
 #main {
+    margin-top: 90px;
 }
 
 #badge-container {
@@ -91,6 +116,13 @@ blockquote {
 
 #badge {
 	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    position: fixed;
+    top: 10px; 
+    left: 50%; 
+    width: 360px; 
+    height: 141px; 
+    transform: translate(-50%, 0);
+    z-index: -1;
 }
 
 #badge-container.lower-right {
@@ -98,13 +130,16 @@ blockquote {
 	width: initial;
 }
 
-#breadcrumbs {
+#breadcrumbs {#
 	padding: 1em;
 	padding-bottom: 0px;
 }
 
 #content {
     padding: 1em;
+    width: 75%;
+    padding-left: 25%;
+    padding-bottom: 4em;
 }
 
 #columns {
@@ -186,6 +221,19 @@ blockquote {
     box-sizing: border-box;
     background-color: #000;
     z-index: +1;
+}
+#site-info > p{
+    margin: 0;
+}
+
+#menu > ul span
+{
+    color: #FC0;
+}
+
+#content-image
+{
+    margin-bottom: 100px;
 }
 
 /* classes */
@@ -300,6 +348,32 @@ blockquote {
 
 .pdf #notes {
     padding-bottom: 22px;
+}
+.palatino {
+    font-family: "palatinoroman", "Times New Roman", Times, serif; 
+}
+
+.euler {
+    font-family: "neo_eulermedium", "Times New Roman", Times, serif;
+}
+.captionContainer {
+    width: 100%;
+    text-align: center;
+    padding: 5px 0 0 0;
+}
+.caption {
+    font-size: 11px;
+    line-height: 12px; 
+    background-color: #fff;
+}
+.caption.euler
+{
+    margin-top: -10px;
+}
+.imageContainer {
+    text-align: center;
+    background-color:#FFF;
+    padding-top: 40px;
 }
 
 /* vertical iPad / horizontal iPhone */

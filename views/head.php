@@ -20,10 +20,12 @@ $name = ltrim(strip_tags($item["name1"]), ".");
 $nav = $oo->nav($uu->ids);
 $show_menu = false;
 if($uu->id) {
-	$is_leaf = empty($oo->children_ids($uu->id));
-	$internal = (substr($_SERVER['HTTP_REFERER'], 0, strlen($host)) === $host);	
-	if(!$is_leaf && $internal)
-		$show_menu = true;
+	// $is_leaf = empty($oo->children_ids($uu->id));
+	// $internal = (substr($_SERVER['HTTP_REFERER'], 0, strlen($host)) === $host);	
+	// if(!$is_leaf && $internal)
+	// 	$show_menu = true;
+
+	$show_menu = true;
 } else  
     if ($uri[1])  
         $uu->id = -1; 
@@ -34,6 +36,9 @@ if($uu->id) {
 		<title><? echo $site; ?></title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<link rel="stylesheet" href="/static/fonts/euler/euler.css">
+		<link rel="stylesheet" href="/static/fonts/optima/optima.css">
+		<link rel="stylesheet" href="/static/fonts/palatino/palatino.css">
 		<link rel="stylesheet" href="/static/css/main.css">
 		<link rel="stylesheet" href="/static/css/sf-text.css">
 		<link rel="stylesheet" href="/static/css/sf-mono.css">
@@ -41,7 +46,7 @@ if($uu->id) {
 	</head>
 	<body><?
 	    if(!$uu->id) {
-    	    ?><header id="menu" class="hidden homepage"><?
+    	    ?><header id="menu" class="homepage"><?
 	    }
 	    else if($show_menu) {
     	    ?><header id="menu" class="visible"><?
@@ -49,7 +54,16 @@ if($uu->id) {
 	    else {
     	    ?><header id="menu" class="hidden"><?
 	    }
-	    ?><ul>
+	    ?>
+	    <div id = 'site-info'>
+	    	<p><a class = 'reverse' href = '/'>Zena Zezza</a></p>
+	    	<p>Portland, Oregon</p>
+	    	<p>USA</p>
+	    	<p>+1 415 321 9304</p>
+	    	<p><a href = 'mailto:zena@zenazezza.org'>zena@zenazezza.org</a></p>
+	    </div>
+	    <br>
+	    <ul>
 		    <li><?
 			    if($uu->id) {
 				    ?><a href="<? echo $host; ?>"><?= $head; ?></a><?
@@ -70,20 +84,26 @@ if($uu->id) {
                     ?></ul><? 
                 }
 		    }
+		    if(substr($n['o']['name1'], 0, 1) != '_' &&
+				substr($n['o']['name1'], 0, 1) != '.' ){
 		    ?><li><?
 			    if($n['o']['id'] != $uu->id) {
-    			    ?><a href="<? echo $host.$n['url']; ?>"><?
+    			    ?><a class = 'reverse' href="<? echo $host.$n['url']; ?>"><?
 				    echo $n['o']['name1'];
                     if ($n['o']['url'] !== "about")
-    				    echo ', ' . $n['o']['deck'];
+    				    $n['o']['deck'];
 	    		    ?></a><?
 			    }
 			    else {
     			    ?><span><?= $n['o']['name1']; ?></span><?
 			    }
 		    ?></li><?
+		    }
 		    $prevd = $d;
 	    }
 	    ?></ul>
 	    </ul>
     </header>
+    <div id = 'badge'>
+    	<a href = '/'><img src = '/media/jpg/label.jpg'></a>
+    </div>

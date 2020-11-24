@@ -4,6 +4,7 @@
 */
 
 $head = 'Hello';
-$site = 'w-w-w-orld.';
-$home = $head . ", " . $site;
+$site = 'Zena Zezza';
+// $home = $head . ", " . $site;
+$home = '';
 ?>

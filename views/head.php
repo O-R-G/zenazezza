@@ -72,7 +72,7 @@ if($uu->id) {
                     echo $head; 
                 }
 		    ?></li>
-		    <ul class="nav-level"><?
+		    <ul id = 'level-1' class="nav-level"><?
 	    $prevd = $nav[0]['depth'];
 	    foreach($nav as $n) {
 		    $d = $n['depth'];
@@ -86,7 +86,7 @@ if($uu->id) {
 		    }
 		    if(substr($n['o']['name1'], 0, 1) != '_' &&
 				substr($n['o']['name1'], 0, 1) != '.' ){
-		    ?><li><?
+		    ?><li class = "<?= $n['o']['id'] == $uu->id ? 'current' : '' ?>"><?
 			    if($n['o']['id'] != $uu->id) {
     			    ?><a class = 'reverse' href="<? echo $host.$n['url']; ?>"><?
 				    echo $n['o']['name1'];
@@ -104,6 +104,22 @@ if($uu->id) {
 	    ?></ul>
 	    </ul>
     </header>
+    <script>
+    	var current_page = document.querySelector('li.current');
+    	if(current_page)
+    	{
+    		var current_parent = current_page.parentNode;
+    		var current_page_siblings = current_parent.childNodes;
+    		if(current_page_siblings.length > 1 && current_parent.id != 'level-1')
+    		{
+    			[].forEach.call(current_page_siblings, function(el, i){
+    				console.log(el.tagName);
+		    		if(el != current_page && el.tagName == 'LI')
+		    			el.classList.add('current_sibling');
+		    	});
+    		}
+    	}
+    </script>
     <div id = 'badge'>
     	<a href = '/'><img src = '/media/jpg/label.jpg'></a>
     </div>

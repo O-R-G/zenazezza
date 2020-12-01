@@ -365,6 +365,7 @@ blockquote {
     font-size: 11px;
     line-height: 12px; 
     background-color: #fff;
+    padding-bottom: 15px;
 }
 .caption.euler
 {
@@ -375,11 +376,36 @@ blockquote {
     background-color:#FFF;
     padding-top: 40px;
 }
-
+.current_sibling
+{
+    display: none;
+}
+.thumbsContainer {
+    float: right;
+}
+.home_main_section #content
+{
+    padding-left: 1em;
+    width: initial;
+}
 /* vertical iPad / horizontal iPhone */
 @media screen and (max-width: 768px) {
 }
 
 /* vertical iPhone */
 @media screen and (max-width: 500px) {
+    #menu
+    {
+        position: static;
+        margin-top: 120px;
+    }
+    #main
+    {
+        margin-top: 0px
+    }
+    #content
+    {
+        width: initial;
+        padding-left: 1em;
+    }
 }

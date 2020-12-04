@@ -26,6 +26,11 @@
             element.classList.toggle('fullwindow');
         },
         toggle: function (element) {
+            if(this.isFullwindow)
+                document.body.classList.remove('isFullwindow');
+            else
+                document.body.classList.add('isFullwindow');
+
             return this.isFullwindow ? this.exit(element) : this.request(element);
         }
     };

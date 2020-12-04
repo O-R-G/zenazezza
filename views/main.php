@@ -5,7 +5,6 @@ $body = $item['body'];
 $notes = $item['notes'];
 $date = $item['begin'];
 $media = $oo->media($item['id']);
-
 // $find = '/<div><br><\/div>/';
 // $replace = '';
 // $body = preg_replace($find, $replace, $body); 
@@ -14,9 +13,9 @@ $media = $oo->media($item['id']);
 <section id="main">
 	
     <div id='content'>
-        <? if(!empty($media))
+        <? if(!empty($media)) {
         ?><div id = 'content-image'><?
-        {
+        
             foreach($media as $m)
             {
                 $m_path = 'media/'.m_pad($m['id']).'.'.$m['type'];
@@ -27,7 +26,7 @@ $media = $oo->media($item['id']);
         ?></div><?
         } 
         ?>
-        <div id=''><?
+        <div id='content-text'><?
             echo $body;
             if ($date) {
                 ?><div id='notes' class='mono'><?

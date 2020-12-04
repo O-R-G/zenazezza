@@ -31,6 +31,7 @@ $home_children = $oo->children($home_id);
 
 $home_thumbnail_num = rand(4, 8);
 shuffle($home_children);
+$time = date('Y-m-d g:i:s A');
 ?><div id='fullwindow'></div>
 <section id="main" class = 'home_main_section'>
     <div id='content'>
@@ -49,22 +50,39 @@ shuffle($home_children);
         ?>
     </div>
 </section>
+<div class = 'timeContainer caption'>
+    <a href='https://www.facebook.com/zenazezzaprojects' target='new'><img windowfullDisabled='1' src='MEDIA/facebook.gif'></a>
+    <a href='https://twitter.com/zenazezza' target='new'><img windowfullDisabled='1' src='MEDIA/twitter.gif'></a>
+    &nbsp;
+    <a href='http://instagram.com/zenazezza' target='new'><img windowfullDisabled='1' src='MEDIA/instagram.gif'></a>
+    &nbsp;&nbsp;&nbsp;
+    <?= $time; ?>
+</div>
 
-<script type="text/javascript" src="/static/js/screenfull.min.js"></script>	
+<!-- <script type="text/javascript" src="/static/js/screenfull.min.js"></script>	 -->
 <script type="text/javascript" src="/static/js/windowfull.js"></script>	
 <script>
     var imgs = document.querySelectorAll('img,video');
 	var i;
 	var index;
 	for (i = 0; i < imgs.length; i++) {
-		if (screenfull.isEnabled) {
-    		imgs[i].addEventListener('click', function () {
-                screenfull.toggle(this);
-    		}, false);
-		} else {
-    		imgs[i].addEventListener('click', function () {
+
+		// if (screenfull.isEnabled) {
+  //   		imgs[i].addEventListener('click', function () {
+  //               screenfull.toggle(this);
+  //   		}, false);
+		// } else {
+  //           console.log('window');
+  //   		imgs[i].addEventListener('click', function () {
+  //               windowfull.toggle(this);
+  //   		}, false);
+  //       }
+    console.log(imgs[i].getAttribute('windowfullDisabled'));
+        if(!imgs[i].getAttribute('windowfullDisabled')) {
+            imgs[i].addEventListener('click', function () {
                 windowfull.toggle(this);
-    		}, false);
+            }, false);
         }
+        
 	}
 </script>

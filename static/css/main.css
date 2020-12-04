@@ -104,7 +104,14 @@ blockquote {
 }
 
 #main {
-    margin-top: 90px;
+    /*margin-top: 90px;*/
+}
+#main:after
+{
+    content: " ";
+    display: block;
+    height: 0;
+    clear: both;
 }
 
 #badge-container {
@@ -136,10 +143,8 @@ blockquote {
 }
 
 #content {
-    padding: 1em;
+    padding: 0 0 20px 25%;
     width: 75%;
-    padding-left: 25%;
-    padding-bottom: 4em;
 }
 
 #columns {
@@ -233,9 +238,16 @@ blockquote {
 
 #content-image
 {
-    margin-bottom: 100px;
+    margin-bottom: -25px;
 }
-
+#content-text
+{
+    margin-top: 105px;
+}
+#content-text > iframe
+{
+    margin-top: 40px;
+}
 /* classes */
 
 .mono {
@@ -364,17 +376,17 @@ blockquote {
 .caption {
     font-size: 11px;
     line-height: 12px; 
-    background-color: #fff;
-    padding-bottom: 15px;
+    padding-bottom: 12px;
 }
+
 .caption.euler
 {
-    margin-top: -10px;
+    margin-top: -5px;
 }
 .imageContainer {
     text-align: center;
     background-color:#FFF;
-    padding-top: 40px;
+    padding-top: 20px;
 }
 .current_sibling
 {
@@ -383,10 +395,29 @@ blockquote {
 .thumbsContainer {
     float: right;
 }
+.home_main_section
+{
+    margin-top: 90px;
+}
 .home_main_section #content
 {
     padding-left: 1em;
     width: initial;
+}
+.isFullwindow #menu
+{
+    display: none;
+}
+.timeContainer {
+    position: absolute;
+    left: 40px;
+    text-align: left;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.timeContainer img
+{
+    width: 20px;
 }
 /* vertical iPad / horizontal iPhone */
 @media screen and (max-width: 768px) {
@@ -407,5 +438,13 @@ blockquote {
     {
         width: initial;
         padding-left: 1em;
+    }
+    #content-text
+    {
+        margin-top: 30px;
+    }
+    #content-image
+    {
+        margin-bottom: 0;
     }
 }

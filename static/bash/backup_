@@ -7,15 +7,15 @@
 # errors to $LOG
 
 DATE=`date +%Y-%m-%d`
-HOME_LOCAL="/home/username"
-WWW_LOCAL="/Library/Webserver/Documents/sitename"
-BACKUP_LOCAL="$HOME_LOCAL/backup/sitename"
+HOME_LOCAL="/home/reinfurt"
+WWW_LOCAL="/var/www/html"
+BACKUP_LOCAL="$HOME_LOCAL/backup/zenazezza.com"
 SQL="$BACKUP_LOCAL/$DATE.sql"
 LOG="$WWW_LOCAL/static/bash/log"
-DB_USER_LOCAL="username"
-DB_PASS_LOCAL="password"
-DB_HOST_LOCAL="database host"
-DB_NAME_LOCAL="database name"
+DB_USER_LOCAL="zenazezza_full"
+DB_PASS_LOCAL="W5Ga4EbS"
+DB_HOST_LOCAL="localhost"
+DB_NAME_LOCAL="zenazezza"
 
 echo "\n$DATE" >>$LOG
 if [ ! -d "$BACKUP_LOCAL" ]; then

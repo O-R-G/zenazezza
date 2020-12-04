@@ -419,6 +419,10 @@ blockquote {
 {
     width: 20px;
 }
+.highlight, a.reverse.highlight
+{
+    color: #FC0; 
+}
 /* vertical iPad / horizontal iPhone */
 @media screen and (max-width: 768px) {
 }

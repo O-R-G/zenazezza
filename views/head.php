@@ -88,14 +88,17 @@ if($uu->id) {
 				substr($n['o']['name1'], 0, 1) != '.' ){
 		    ?><li class = "<?= $n['o']['id'] == $uu->id ? 'current' : '' ?>"><?
 			    if($n['o']['id'] != $uu->id) {
-    			    ?><a class = 'reverse' href="<? echo $host.$n['url']; ?>"><?
+			    	$highlight = false;
+			    	if(in_array($n['o']['url'], $uri))
+			    		$highlight = true;
+    			    ?><a class = 'reverse <?= $highlight ? "highlight" : "" ?>' href="<? echo $host.$n['url']; ?>"><?
 				    echo $n['o']['name1'];
                     if ($n['o']['url'] !== "about")
     				    $n['o']['deck'];
 	    		    ?></a><?
 			    }
 			    else {
-    			    ?><span><?= $n['o']['name1']; ?></span><?
+    			    ?><span class = 'highlight'><?= $n['o']['name1']; ?></span><?
 			    }
 		    ?></li><?
 		    }

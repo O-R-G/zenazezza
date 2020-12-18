@@ -439,15 +439,15 @@ blockquote {
 }
 .paypalbutton
 {
-    background-color: #FC0;
-    color: #000 !important;
+    /*background-color: #FC0;*/
+    color: #E80 !important;
     display: inline-block;
-    padding: 10px 20px 7px 20px;
+    /*padding: 10px 20px 7px 20px;*/
     /*margin-left: 30px;*/
 }
 .paypalbutton:hover
 {
-    color: #fff !important;
+    /*color: #000 !important;*/
     /*background-color: #DDD;*/
 }
 /* vertical iPad / horizontal iPhone */

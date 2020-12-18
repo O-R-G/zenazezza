@@ -41,21 +41,50 @@ $media = $oo->media($item['id']);
     </div>
 </section>
 
-<script type="text/javascript" src="/static/js/screenfull.min.js"></script>	
+<!-- <script type="text/javascript" src="/static/js/screenfull.min.js"></script>	 -->
 <script type="text/javascript" src="/static/js/windowfull.js"></script>	
 <script>
     var imgs = document.querySelectorAll('img,video');
 	var i;
 	var index;
 	for (i = 0; i < imgs.length; i++) {
-		if (screenfull.isEnabled) {
-    		imgs[i].addEventListener('click', function () {
-                screenfull.toggle(this);
-    		}, false);
-		} else {
-    		imgs[i].addEventListener('click', function () {
+		// if (screenfull.isEnabled) {
+  //   		imgs[i].addEventListener('click', function () {
+  //               screenfull.toggle(this);
+  //   		}, false);
+		// } else {
+  //   		imgs[i].addEventListener('click', function () {
+  //               windowfull.toggle(this);
+  //   		}, false);
+  //       }
+        if(!imgs[i].getAttribute('windowfullDisabled')) {
+            imgs[i].addEventListener('click', function () {
                 windowfull.toggle(this);
-    		}, false);
+            }, false);
         }
 	}
+
+    var imgs_in_main = document.querySelectorAll('#main img');
+    var iframes_in_main = document.querySelectorAll('#main iframe');
+    if(body.classList.contains('mobile')){
+        [].forEach.call(imgs_in_main, function(el, i){
+            el.style.width = '100%';
+            el.style.height = 'initial';
+        });
+        [].forEach.call(iframes_in_main, function(el, i){
+            // el.style.width = '100%';
+            // el.style.height = 'initial';
+            var this_width = parseInt(el.getAttribute('width'));
+            var this_height = parseInt(el.getAttribute('height'));
+            var parent_width = el.parentNode.offsetWidth;
+            console.log(parent_width);
+            el.width = '100%';
+            el.height = this_height / this_width * parent_width + 'px';
+            if(i == 0)
+                el.style.marginTop = 0;
+            // el.height = 'initial';
+        });
+    }
+    
+
 </script>

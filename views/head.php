@@ -44,7 +44,15 @@ if($uu->id) {
 		<link rel="stylesheet" href="/static/css/sf-mono.css">
 		<link rel="apple-touch-icon" href="/media/png/touchicon.png" />
 	</head>
-	<body><?
+	<body>
+		<script>
+			var body = document.body;
+			if(window.innerWidth < 500)
+		    {
+		        body.classList.add('mobile');
+		    }
+		</script>
+		<?
 	    if(!$uu->id) {
     	    ?><header id="menu" class="homepage"><?
 	    }

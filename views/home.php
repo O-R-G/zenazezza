@@ -26,6 +26,23 @@ function displayFloatImage($m, $caption){
     return $output;
 }
 
+function displayNormalImage($m, $caption){
+    global $oo;
+
+    $src = m_url($m);
+    $src_size = 'media/'.m_pad($m['id']).'.'.$m['type'];
+
+    // $margin = rand(10, 100);
+    // $sizer = rand(75, 95) * .01;
+    // $specs  = getimagesize($src_size); 
+
+    $class = 'thumbsContainer black euler mobile_thumbnail';
+
+    $output = '<div class = "'.$class.'" ><img src = "'. $src .'" alt = "'.$caption.'"><div class = "captionContainer caption">'. $caption .'</div></div>';
+
+    return $output;
+}
+
 $home_id = end($oo->urls_to_ids(array('home')));
 $home_children = $oo->children($home_id);
 
@@ -46,6 +63,7 @@ $time = date('Y-m-d g:i:s A');
                 $this_m = $oo->media($home_children[$i]['id'])[0];
                 $this_caption = $home_children[$i]['deck'];
                 echo displayFloatImage($this_m, $this_caption);
+                echo displayNormalImage($this_m, $this_caption);
             }
         ?>
     </div>
@@ -65,6 +83,7 @@ $time = date('Y-m-d g:i:s A');
     var imgs = document.querySelectorAll('img,video');
 	var i;
 	var index;
+
 	for (i = 0; i < imgs.length; i++) {
 
 		// if (screenfull.isEnabled) {
@@ -77,7 +96,6 @@ $time = date('Y-m-d g:i:s A');
   //               windowfull.toggle(this);
   //   		}, false);
   //       }
-    console.log(imgs[i].getAttribute('windowfullDisabled'));
         if(!imgs[i].getAttribute('windowfullDisabled')) {
             imgs[i].addEventListener('click', function () {
                 windowfull.toggle(this);
@@ -85,4 +103,7 @@ $time = date('Y-m-d g:i:s A');
         }
         
 	}
+    var sThumbsContainer = document.getElementsByClassName('thumbsContainer');
+    
+    
 </script>

@@ -441,7 +441,9 @@ blockquote {
 {
     background-color: #FC0;
     color: #000 !important;
-    padding: 7px 15px 4px 15px;
+    display: inline-block;
+    padding: 10px 20px 7px 20px;
+    /*margin-left: 30px;*/
 }
 .paypalbutton:hover
 {

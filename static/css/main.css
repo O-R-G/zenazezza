@@ -230,6 +230,7 @@ blockquote {
     background-color: #fff;
     z-index: +1;
 }
+
 #site-info > p{
     margin: 0;
 }
@@ -395,12 +396,14 @@ blockquote {
     padding: 20px;
     display: inline-block;
 }
-.current_sibling
-{
+.current_sibling {
     display: none;
 }
 .thumbsContainer {
     float: right;
+}
+.thumbsContainer img {
+    filter: grayscale(100%);
 }
 .home_main_section
 {

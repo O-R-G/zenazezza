@@ -458,6 +458,14 @@ blockquote {
     /*color: #000 !important;*/
     /*background-color: #DDD;*/
 }
+select
+{
+    outline-color: #D70;
+}
+select:focus
+{
+    /*outline: 0;*/
+}
 /* vertical iPad / horizontal iPhone */
 @media screen and (max-width: 768px) {
 }

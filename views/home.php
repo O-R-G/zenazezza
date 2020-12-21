@@ -44,10 +44,59 @@ function displayNormalImage($m, $caption){
 }
 
 $home_id = end($oo->urls_to_ids(array('home')));
-$home_children = $oo->children($home_id);
+$home_children_photo_raw = $oo->children($home_id);
+$home_children_photo = array();
+foreach($home_children_photo_raw as $child)
+{
+    $this_m = $oo->media($child['id'])[0];
+    $home_children_photo[] = array(
+        'media' => $this_m,
+        'caption' => $child['deck']
+    );
+}
+$home_children_installation = array();
+$past_id = end($oo->urls_to_ids(array('past')));
+$past_events = $oo->children($past_id);
+foreach($past_events as $event){
+    if(substr($event['name1'], 0, 1) != '.')
+    {
+        $event_children = $oo->children($event['id']);
+        foreach($event_children as $e_child)
+        {
+            if($e_child['url'] == 'images')
+            {
+                $images_children = $oo->children($e_child['id']);
+                foreach($images_children as $i_child){
+                    if($oo->media($i_child['id']))
+                    {
+                        $this_media = $oo->media($i_child['id']);
+                        foreach($this_media as $m)
+                        {
+                            $home_children_installation[] = array(
+                                'media' => $m,
+                                'caption' => $m['caption']
+                            );
+                        }
+                    }
+                }
+                break;
+            }
+        }
+    }
+};
 
-$home_thumbnail_num = rand(4, 8);
+$home_thumbnail_num_photo = rand(4, 8);
+$home_thumbnail_num_installation = rand(2, 3);
+$home_thumbnail_num = $home_thumbnail_num_photo + $home_thumbnail_num_installation;
+shuffle($home_children_photo);
+shuffle($home_children_installation);
+for($i = 0 ; $i < $home_thumbnail_num_photo ; $i++)
+    $home_children[] = $home_children_photo[$i];
+
+for($i = 0 ; $i < $home_thumbnail_num_installation ; $i++)
+    $home_children[] = $home_children_installation[$i];
 shuffle($home_children);
+
 $time = date('Y-m-d g:i:s A');
 ?><div id='fullwindow'></div>
 <section id="main" class = 'home_main_section'>
@@ -58,21 +107,26 @@ $time = date('Y-m-d g:i:s A');
             echo displayFloatImage($this_m, $this_caption);
         } ?> -->
         <? 
-            for($i = 0; $i < $home_thumbnail_num ; $i ++)
+            foreach($home_children as $h_child)
             {
-                $this_m = $oo->media($home_children[$i]['id'])[0];
-                $this_caption = $home_children[$i]['deck'];
-                echo displayFloatImage($this_m, $this_caption);
-                echo displayNormalImage($this_m, $this_caption);
+                echo displayFloatImage($h_child['media'], $h_child['caption']);
+                echo displayNormalImage($h_child['media'], $h_child['caption']);
             }
+            // for($i = 0; $i < $home_thumbnail_num ; $i ++)
+            // {
+            //     $this_m = $oo->media($home_children[$i]['id'])[0];
+            //     $this_caption = $home_children[$i]['deck'];
+            //     echo displayFloatImage($this_m, $this_caption);
+            //     echo displayNormalImage($this_m, $this_caption);
+            // }
         ?>
     </div>
 </section>
 <div class = 'timeContainer caption'>
-    <a href='https://www.facebook.com/zenazezzaprojects' target='new'><img windowfullDisabled='1' src='MEDIA/facebook.gif'></a>
-    <a href='https://twitter.com/zenazezza' target='new'><img windowfullDisabled='1' src='MEDIA/twitter.gif'></a>
+    <a href='https://www.facebook.com/zenazezzaprojects' target='new'><img windowfullDisabled='1' src='media/facebook.gif'></a>
+    <a href='https://twitter.com/zenazezza' target='new'><img windowfullDisabled='1' src='media/twitter.gif'></a>
     &nbsp;
-    <a href='http://instagram.com/zenazezza' target='new'><img windowfullDisabled='1' src='MEDIA/instagram.gif'></a>
+    <a href='http://instagram.com/zenazezza' target='new'><img windowfullDisabled='1' src='media/instagram.gif'></a>
     &nbsp;&nbsp;&nbsp;
     <?= $time; ?>
 </div>

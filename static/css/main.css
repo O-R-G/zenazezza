@@ -17,7 +17,7 @@ body {
     line-height: 18px;
 	-webkit-font-smoothing: subpixel-antialiased;
 	-webkit-text-size-adjust: 100%;
-    padding: 20px;
+    padding: 20px 30px;
 }
 
 p {
@@ -68,7 +68,7 @@ a.reverse:hover
 
 header {
 	position: relative;
-	padding: 1em;
+	padding-right: 1em;
 }
 
 header.homepage {
@@ -103,6 +103,9 @@ blockquote {
     z-index: 100;
     left: 30px;
     top: 100px;
+    max-width: 22vw;
+    max-height: calc( 100vh - 150px );
+    overflow: scroll;
 	/*padding-bottom: 1em;*/
 }
 
@@ -146,7 +149,7 @@ blockquote {
 }
 
 #content {
-    padding: 0 0 20px 25%;
+    padding: 0 0 20px 23vw;
     width: 75%;
 }
 
@@ -479,6 +482,9 @@ select:focus
     {
         position: static;
         margin-top: 120px;
+        padding: 1em;
+        max-width: initial;
+        max-height: initial;
     }
     #main
     {

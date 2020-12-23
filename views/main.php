@@ -77,7 +77,6 @@ $media = $oo->media($item['id']);
             var this_width = parseInt(el.getAttribute('width'));
             var this_height = parseInt(el.getAttribute('height'));
             var parent_width = el.parentNode.offsetWidth;
-            console.log(parent_width);
             el.width = '100%';
             el.height = this_height / this_width * parent_width + 'px';
             if(i == 0)
@@ -86,5 +85,4 @@ $media = $oo->media($item['id']);
         });
     }
     
-
 </script>

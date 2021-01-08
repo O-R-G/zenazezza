@@ -8,7 +8,7 @@ $find = '/<div><br><\/div>/';
 $replace = '';
 $body = preg_replace($find, $replace, $body); 
 
-function displayFloatImage($m, $caption){
+function displayFloatImage($m, $caption, $alt){
     global $oo;
 
     $src = m_url($m);
@@ -21,12 +21,12 @@ function displayFloatImage($m, $caption){
     $class = 'thumbsContainer black euler';
     $style = 'margin: '.$margin.'px; width: '.$specs[0] * $sizer.'px; height: '.$specs[1] * $sizer.'px';
 
-    $output = '<div class = "'.$class.'" style = "'.$style.'"><img src = "'. $src .'" alt = "'.$caption.'"><div class = "captionContainer caption">'. $caption .'</div></div>';
+    $output = '<div class = "'.$class.'" style = "'.$style.'"><img src = "'. $src .'" alt = "'.$alt.'"><div class = "captionContainer caption">'. $caption .'</div></div>';
 
     return $output;
 }
 
-function displayNormalImage($m, $caption){
+function displayNormalImage($m, $caption, $alt){
     global $oo;
 
     $src = m_url($m);
@@ -38,7 +38,7 @@ function displayNormalImage($m, $caption){
 
     $class = 'thumbsContainer black euler mobile_thumbnail';
 
-    $output = '<div class = "'.$class.'" ><img src = "'. $src .'" alt = "'.$caption.'"><div class = "captionContainer caption">'. $caption .'</div></div>';
+    $output = '<div class = "'.$class.'" ><img src = "'. $src .'" alt = "'.$alt.'"><div class = "captionContainer caption">'. $caption .'</div></div>';
 
     return $output;
 }
@@ -51,13 +51,15 @@ foreach($home_children_photo_raw as $child)
     $this_m = $oo->media($child['id'])[0];
     $home_children_photo[] = array(
         'media' => $this_m,
-        'caption' => $child['deck']
+        'caption' => $child['deck'],
+        'alt' => $child['deck']
     );
 }
 $home_children_installation = array();
 $past_id = end($oo->urls_to_ids(array('past')));
 $past_events = $oo->children($past_id);
 foreach($past_events as $event){
+    $this_artist_name = $event['name1'];
     if(substr($event['name1'], 0, 1) != '.')
     {
         $event_children = $oo->children($event['id']);
@@ -67,15 +69,18 @@ foreach($past_events as $event){
             {
                 $images_children = $oo->children($e_child['id']);
                 foreach($images_children as $i_child){
-                    if($oo->media($i_child['id']))
+                    if($oo->media($i_child['id']) && strpos($i_child['name1'], "W.I.T.C.H") === false)
                     {
                         $this_media = $oo->media($i_child['id']);
                         foreach($this_media as $m)
                         {
+                            
                             $home_children_installation[] = array(
                                 'media' => $m,
-                                'caption' => $m['caption']
+                                'caption' => $m['caption'],
+                                'alt' => $m['caption']
                             );
+                            
                         }
                     }
                 }
@@ -101,16 +106,12 @@ $time = date('Y-m-d g:i:s A');
 ?><div id='fullwindow'></div>
 <section id="main" class = 'home_main_section'>
     <div id='content'>
-        <!-- <? foreach($home_children as $hc){
-            $this_m = $oo->media($hc['id'])[0];
-            $this_caption = $hc['deck'];
-            echo displayFloatImage($this_m, $this_caption);
-        } ?> -->
+        
         <? 
             foreach($home_children as $h_child)
             {
-                echo displayFloatImage($h_child['media'], $h_child['caption']);
-                echo displayNormalImage($h_child['media'], $h_child['caption']);
+                echo displayFloatImage($h_child['media'], $h_child['caption'], $h_child['alt']);
+                echo displayNormalImage($h_child['media'], $h_child['caption'], $h_child['alt']);
             }
             // for($i = 0; $i < $home_thumbnail_num ; $i ++)
             // {

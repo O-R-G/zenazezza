@@ -8,7 +8,7 @@ $find = '/<div><br><\/div>/';
 $replace = '';
 $body = preg_replace($find, $replace, $body); 
 
-function displayFloatImage($m, $caption, $alt){
+function displayFloatImage($m, $caption, $alt, $type){
     global $oo;
 
     $src = m_url($m);
@@ -18,7 +18,7 @@ function displayFloatImage($m, $caption, $alt){
     $sizer = rand(75, 95) * .01;
     $specs  = getimagesize($src_size); 
 
-    $class = 'thumbsContainer black euler';
+    $class = 'thumbsContainer black euler ' . $type;
     $style = 'margin: '.$margin.'px; width: '.$specs[0] * $sizer.'px; height: '.$specs[1] * $sizer.'px';
 
     $output = '<div class = "'.$class.'" style = "'.$style.'"><img src = "'. $src .'" alt = "'.$alt.'"><div class = "captionContainer caption">'. $caption .'</div></div>';
@@ -36,7 +36,7 @@ function displayNormalImage($m, $caption, $alt){
     // $sizer = rand(75, 95) * .01;
     // $specs  = getimagesize($src_size); 
 
-    $class = 'thumbsContainer black euler mobile_thumbnail';
+    $class = 'thumbsContainer black euler mobile_thumbnail ' . $type;
 
     $output = '<div class = "'.$class.'" ><img src = "'. $src .'" alt = "'.$alt.'"><div class = "captionContainer caption">'. $caption .'</div></div>';
 
@@ -52,7 +52,8 @@ foreach($home_children_photo_raw as $child)
     $home_children_photo[] = array(
         'media' => $this_m,
         'caption' => $child['deck'],
-        'alt' => $child['deck']
+        'alt' => $child['deck'],
+        'type' => 'zena'
     );
 }
 $home_children_installation = array();
@@ -65,33 +66,45 @@ foreach($past_events as $event){
         $event_children = $oo->children($event['id']);
         foreach($event_children as $e_child)
         {
-            if($e_child['url'] == 'images')
-            {
-                $images_children = $oo->children($e_child['id']);
-                foreach($images_children as $i_child){
-                    if($oo->media($i_child['id']) && strpos($i_child['name1'], "W.I.T.C.H") === false)
-                    {
-                        $this_media = $oo->media($i_child['id']);
-                        foreach($this_media as $m)
-                        {
-                            
-                            $home_children_installation[] = array(
-                                'media' => $m,
-                                'caption' => $m['caption'],
-                                'alt' => $m['caption']
-                            );
-                            
-                        }
-                    }
+            $this_media = $oo->media($e_child['id']);
+            if(count($this_media) > 0){
+                foreach($this_media as $m)
+                {
+                    $home_children_installation[] = array(
+                        'media' => $m,
+                        'caption' => $m['caption'],
+                        'alt' => $m['caption'],
+                        'type' => 'event'
+                    );
                 }
-                break;
             }
+            // if($e_child['url'] == 'images')
+            // {
+            //     $images_children = $oo->children($e_child['id']);
+            //     foreach($images_children as $i_child){
+            //         if($oo->media($i_child['id']) && strpos($i_child['name1'], "W.I.T.C.H") === false)
+            //         {
+            //             $this_media = $oo->media($i_child['id']);
+            //             foreach($this_media as $m)
+            //             {
+                            
+            //                 $home_children_installation[] = array(
+            //                     'media' => $m,
+            //                     'caption' => $m['caption'],
+            //                     'alt' => $m['caption']
+            //                 );
+                            
+            //             }
+            //         }
+            //     }
+            //     break;
+            // }
         }
     }
 };
 
-$home_thumbnail_num_photo = rand(4, 8);
-$home_thumbnail_num_installation = rand(2, 3);
+$home_thumbnail_num_photo = rand(4, 6);
+$home_thumbnail_num_installation = rand(4, 6);
 $home_thumbnail_num = $home_thumbnail_num_photo + $home_thumbnail_num_installation;
 shuffle($home_children_photo);
 shuffle($home_children_installation);
@@ -110,8 +123,8 @@ $time = date('Y-m-d g:i:s A');
         <? 
             foreach($home_children as $h_child)
             {
-                echo displayFloatImage($h_child['media'], $h_child['caption'], $h_child['alt']);
-                echo displayNormalImage($h_child['media'], $h_child['caption'], $h_child['alt']);
+                echo displayFloatImage($h_child['media'], $h_child['caption'], $h_child['alt'], $h_child['type']);
+                echo displayNormalImage($h_child['media'], $h_child['caption'], $h_child['alt'], $h_child['type']);
             }
             // for($i = 0; $i < $home_thumbnail_num ; $i ++)
             // {
@@ -140,17 +153,6 @@ $time = date('Y-m-d g:i:s A');
 	var index;
 
 	for (i = 0; i < imgs.length; i++) {
-
-		// if (screenfull.isEnabled) {
-  //   		imgs[i].addEventListener('click', function () {
-  //               screenfull.toggle(this);
-  //   		}, false);
-		// } else {
-  //           console.log('window');
-  //   		imgs[i].addEventListener('click', function () {
-  //               windowfull.toggle(this);
-  //   		}, false);
-  //       }
         if(!imgs[i].getAttribute('windowfullDisabled')) {
             imgs[i].addEventListener('click', function () {
                 windowfull.toggle(this);

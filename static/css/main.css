@@ -408,6 +408,16 @@ blockquote {
 .thumbsContainer img {
     filter: grayscale(100%);
 }
+.thumbsContainer.zena
+{
+    float: right;
+    clear: right;
+}
+.thumbsContainer.event
+{
+    float: left;
+    clear: left;
+}
 .home_main_section
 {
     margin-top: 90px;

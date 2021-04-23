@@ -2,6 +2,8 @@
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 html, body {
@@ -20,6 +22,11 @@ body {
     padding: 20px 30px;
 }
 
+h1,h2,h3
+{
+    font-size: 15.5px;
+    line-height: 18px;
+}
 p {
 	margin-bottom: 1em;
 }
@@ -111,6 +118,7 @@ blockquote {
 
 #main {
     /*margin-top: 90px;*/
+    padding-bottom: 60px;
 }
 #main:after
 {
@@ -148,7 +156,7 @@ blockquote {
 	padding-bottom: 0px;
 }
 
-#content {
+.content-container {
     padding: 0 0 20px 23vw;
     width: 75%;
 }
@@ -402,6 +410,9 @@ blockquote {
 .current_sibling {
     display: none;
 }
+ul[depth="4"] .current_sibling {
+    display: block;
+}
 .thumbsContainer {
     float: right;
 }
@@ -474,6 +485,20 @@ blockquote {
     /*color: #000 !important;*/
     /*background-color: #DDD;*/
 }
+.list-container
+{
+    width: calc(78vw - 60px);
+    padding-left: 30px;
+    margin-left: 22vw;
+}
+.list-child
+{
+    margin-bottom: 30px;
+}
+.list-child-link
+{
+    display: inline-block;
+}
 select
 {
     outline-color: #D70;
@@ -501,7 +526,7 @@ select:focus
         margin-top: 30px;
         padding-bottom: 50px;
     }
-    #content
+    .content-container
     {
         width: initial;
         padding-left: 0;

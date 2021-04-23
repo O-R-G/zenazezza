@@ -5,6 +5,7 @@ require_once('open-records-generator/config/url.php');
 
 // site
 require_once('static/php/config.php');
+require_once('static/php/function.php');
 
 $db = db_connect("guest");
 $oo = new Objects();
@@ -17,7 +18,17 @@ if($uu->id)
 else
 	$item = $oo->get(0);
 $name = ltrim(strip_tags($item["name1"]), ".");
-$nav = $oo->nav($uu->ids);
+$id_arr_raw = $uu->ids;
+// var_dump($id_arr_raw);
+if(count($id_arr_raw) > 3){
+	$id_arr = array_slice($id_arr_raw, 0, 3);
+}
+else
+	$id_arr = $id_arr_raw;
+// var_dump($id_arr);
+// $nav = $oo->nav($id_arr);
+$nav = nav_zenazezza($id_arr, $oo);
+// var_dump($nav);
 $show_menu = false;
 if($uu->id) {
 	// $is_leaf = empty($oo->children_ids($uu->id));
@@ -84,8 +95,9 @@ if($uu->id) {
 	    $prevd = $nav[0]['depth'];
 	    foreach($nav as $n) {
 		    $d = $n['depth'];
-		    if($d > $prevd) {
-    		    ?><ul class="nav-level"><?
+		    // var_dump($d);
+		   	if($d > $prevd) {
+    		    ?><ul class="nav-level" depth="<?= $d; ?>"><?
 		    }
 		    else {
 			    for($i = 0; $i < $prevd - $d; $i++) { 

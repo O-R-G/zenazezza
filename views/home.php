@@ -8,40 +8,7 @@ $find = '/<div><br><\/div>/';
 $replace = '';
 $body = preg_replace($find, $replace, $body); 
 
-function displayFloatImage($m, $caption, $alt, $type){
-    global $oo;
 
-    $src = m_url($m);
-    $src_size = 'media/'.m_pad($m['id']).'.'.$m['type'];
-
-    $margin = rand(10, 100);
-    $sizer = rand(75, 95) * .01;
-    $specs  = getimagesize($src_size); 
-
-    $class = 'thumbsContainer black euler ' . $type;
-    $style = 'margin: '.$margin.'px; width: '.$specs[0] * $sizer.'px; height: '.$specs[1] * $sizer.'px';
-
-    $output = '<div class = "'.$class.'" style = "'.$style.'"><img src = "'. $src .'" alt = "'.$alt.'"><div class = "captionContainer caption">'. $caption .'</div></div>';
-
-    return $output;
-}
-
-function displayNormalImage($m, $caption, $alt){
-    global $oo;
-
-    $src = m_url($m);
-    $src_size = 'media/'.m_pad($m['id']).'.'.$m['type'];
-
-    // $margin = rand(10, 100);
-    // $sizer = rand(75, 95) * .01;
-    // $specs  = getimagesize($src_size); 
-
-    $class = 'thumbsContainer black euler mobile_thumbnail ' . $type;
-
-    $output = '<div class = "'.$class.'" ><img src = "'. $src .'" alt = "'.$alt.'"><div class = "captionContainer caption">'. $caption .'</div></div>';
-
-    return $output;
-}
 
 $home_id = end($oo->urls_to_ids(array('home')));
 $home_children_photo_raw = $oo->children($home_id);
@@ -57,7 +24,7 @@ foreach($home_children_photo_raw as $child)
     );
 }
 $home_children_installation = array();
-$past_id = end($oo->urls_to_ids(array('past')));
+$past_id = end($oo->urls_to_ids(array('seasons','past')));
 $past_events = $oo->children($past_id);
 foreach($past_events as $event){
     $this_artist_name = $event['name1'];

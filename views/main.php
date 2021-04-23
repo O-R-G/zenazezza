@@ -8,9 +8,13 @@ $media = $oo->media($item['id']);
 // $find = '/<div><br><\/div>/';
 // $replace = '';
 // $body = preg_replace($find, $replace, $body); 
-
+$children = $oo->children($item['id']);
+foreach($children as $key => &$child){
+    if(substr($child['name1'], 0, 1) == '.')
+        unset($children[$key]);
+}
 ?><div id='fullwindow'></div>
-<section id="main">
+<section id="main" class='content-container'>
 	
     <div id='content'>
         <? if(!empty($media)) {
@@ -18,6 +22,7 @@ $media = $oo->media($item['id']);
         
             foreach($media as $m)
             {
+                
                 $m_path = 'media/'.m_pad($m['id']).'.'.$m['type'];
                 $m_size = getimagesize($m_path);
                 $m_style = 'width:'.$m_size[0].'px; height:'.$m_size[1].'px;';
@@ -38,6 +43,15 @@ $media = $oo->media($item['id']);
                 ?></div><?
             }
         ?></div>
+        <? if(count($children) > 0){
+            ?><br><?
+            foreach($children as $child)
+            {
+                $url = implode('/', $uri) .'/'. $child['url'];
+                $title = $child['name1'];
+                ?><a href="<?= $url; ?>"><?= $title; ?><a><br><?
+            }
+        } ?>
     </div>
 </section>
 

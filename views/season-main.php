@@ -14,11 +14,17 @@ foreach($children as $key => &$child){
         unset($children[$key]);
 }
 unset($child);
+
+if(count($uri) == 3)
+    $season_title = $item['name1'];
+else
+    $season_title = '';
 ?><div id='fullwindow'></div>
 <div id="layout-container">
+    
     <main id="main" class='content-container'>
-    	
         <div id='content'>
+
             <? if(!empty($media)) {
             ?><div id = 'content-image'><?
             
@@ -55,10 +61,46 @@ unset($child);
                 }
             } ?> -->
         </div>
+        <?
+        foreach($children as $child){
+            $m = $oo->media($child['id'])[0];
+            if($m != null)
+            {
+                $thumbnail_url = m_url($m);
+                $thumbnail_alt = $m['caption'];
+            }
+            $title = $child['name1'];
+            $url = implode('/', $uri) .'/'. $child['url'];
+            $section_children = $oo->children($child['id']);
+            ?><div id="season-section-<?= $child['url']; ?>" class = 'season-section'>
+                <br><h2><?= strtoupper($child['name1']); ?></h2><br>
+                <? foreach($section_children as $s_child){
+                    $m = $oo->media($s_child['id'])[0];
+                    if($m != null)
+                    {
+                        $thumbnail_url = m_url($m);
+                        $thumbnail_alt = $m['caption'];
+                    }
+                    $s_title = $s_child['name1'];
+                    $url = implode('/', $uri) .'/'.$child['url'] . '/' . $s_child['url'];
+                    ?><div class = 'list-child'>
+                        <a class="list-child-link reverse" href = '<?= $url; ?>'>
+                            <h1><?= $s_title; ?></h1>
+                            <? if($m != null){
+                                ?><img src = '<?= $thumbnail_url; ?>' alt = '<?= $thumbnail_alt; ?>'><?
+                            } ?>
+                        </a>
+                    </div><br><?
+                } ?>
+            </div><?
+        }
+        ?>
     </main>
     <? if(count($uri) == 3 && count($children) > 0){
-        ?><aside class="season-children-container"><?
-        foreach($children as $key => $child){
+        ?><aside class="season-children-container">
+            <h1 class="season-title">Season <?= $season_title; ?></h1>
+        <?
+        foreach($children as $child){
             $m = $oo->media($child['id'])[0];
             if($m != null)
             {

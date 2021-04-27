@@ -20,8 +20,8 @@ else
 $name = ltrim(strip_tags($item["name1"]), ".");
 $id_arr_raw = $uu->ids;
 // var_dump($id_arr_raw);
-if(count($id_arr_raw) > 3){
-	$id_arr = array_slice($id_arr_raw, 0, 3);
+if(count($id_arr_raw) > 1){
+	$id_arr = array_slice($id_arr_raw, 0, 1);
 }
 else
 	$id_arr = $id_arr_raw;
@@ -51,8 +51,6 @@ if($uu->id) {
 		<link rel="stylesheet" href="/static/fonts/optima/optima.css">
 		<link rel="stylesheet" href="/static/fonts/palatino/palatino.css">
 		<link rel="stylesheet" href="/static/css/main.css">
-		<link rel="stylesheet" href="/static/css/sf-text.css">
-		<link rel="stylesheet" href="/static/css/sf-mono.css">
 		<link rel="apple-touch-icon" href="/media/png/touchicon.png" />
 	</head>
 	<body>

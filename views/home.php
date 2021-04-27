@@ -71,14 +71,14 @@ foreach($past_events as $event){
 };
 
 $home_thumbnail_num_photo = rand(4, 6);
-$home_thumbnail_num_installation = rand(4, 6);
-$home_thumbnail_num = $home_thumbnail_num_photo + $home_thumbnail_num_installation;
+$home_thumbnail_num_event = rand(4, 6);
+$home_thumbnail_num = $home_thumbnail_num_photo + $home_thumbnail_num_event;
 shuffle($home_children_photo);
 shuffle($home_children_installation);
 for($i = 0 ; $i < $home_thumbnail_num_photo ; $i++)
     $home_children[] = $home_children_photo[$i];
 
-for($i = 0 ; $i < $home_thumbnail_num_installation ; $i++)
+for($i = 0 ; $i < $home_thumbnail_num_event ; $i++)
     $home_children[] = $home_children_installation[$i];
 shuffle($home_children);
 
@@ -125,9 +125,8 @@ $time = date('Y-m-d g:i:s A');
                 windowfull.toggle(this);
             }, false);
         }
-        
 	}
-    var sThumbsContainer = document.getElementsByClassName('thumbsContainer');
+    // var sThumbsContainer = document.getElementsByClassName('thumbsContainer');
     
     
 </script>

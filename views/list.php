@@ -3,7 +3,8 @@
 	$children = $oo->children($item['id']);
 
 ?>
-<section id="main" class = 'list-container'>
+<div id="layout-container">
+<main id="main" class = 'list-container'>
 	<? foreach($children as $child){
 		if(substr($child['name1'], 0, 1) != '.')
 		{
@@ -26,4 +27,5 @@
 			</div><?
 		}
 	} ?>
-</section>
+</main>
+</div>

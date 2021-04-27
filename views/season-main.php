@@ -110,11 +110,11 @@ else
             $title = $child['name1'];
             $url = implode('/', $uri) .'/'. $child['url'];
             ?><div class = 'list-child'>
-                <a class="list-child-link" href = '<?= $url; ?>'>
+                <a class="list-child-link" href = '#season-section-<?= $child['url']; ?>'>
                     <? if($m != null){
                         ?><img src = '<?= $thumbnail_url; ?>' alt = '<?= $thumbnail_alt; ?>'><?
                     } ?>
-                    <h1><?= $title; ?></h1>
+                    <h1><?= strtoupper($title); ?></h1>
                 </a>
             </div><?
         }

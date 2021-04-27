@@ -98,7 +98,7 @@ else
     </main>
     <? if(count($uri) == 3 && count($children) > 0){
         ?><aside class="season-children-container">
-            <h1 class="season-title">Season <?= $season_title; ?></h1>
+            <h1 class="season-title">Season <?= $season_title; ?></h1><br>
         <?
         foreach($children as $child){
             $m = $oo->media($child['id'])[0];

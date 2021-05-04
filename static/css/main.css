@@ -22,12 +22,12 @@ body {
     padding: 20px 30px;
 }
 
-h1,h2,h3
-{
+h1,h2,h3 {
     font-size: 15.5px;
     line-height: 18px;
     font-weight: normal;
 }
+
 p {
 	margin-bottom: 1em;
 }
@@ -64,14 +64,22 @@ a:active {
     text-decoration: none;  
 }
 
-a.reverse
-{
+a.reverse {
     color: #000;
 }
-a.reverse:hover
-{
+
+a.reverse:hover {
     /*color: #FC0;*/
     color: #D70;
+}
+
+b {
+    font-weight: normal;
+    color: #D70;
+}
+
+i {
+    font-family: "neo_eulermedium", "Times New Roman", Times, serif;
 }
 
 header {
@@ -235,30 +243,35 @@ ul > ul > ul{
     z-index: +1;
 }
 
-#site-info > p{
+#site-info > p {
     margin: 0;
 }
 
-#menu > ul span
-{
+#menu > ul span {
     /*color: #FC0;*/
     color: #D70;
 }
 
-#content-image
-{
+#content-image {
     margin-bottom: -25px;
     text-align: center;
     background-color: #fff;
 }
-#content-text
-{
+
+#content-text {
     margin-top: 100px;
 }
-#content-text > iframe
-{
+
+#content-text > iframe {
     margin-top: 40px;
 }
+
+#content-image img {
+    filter: grayscale(100%);
+}
+
+
+
 /* classes */
 
 .mono {
@@ -372,30 +385,33 @@ ul > ul > ul{
 .pdf #notes {
     padding-bottom: 22px;
 }
+
 .palatino {
     font-family: "palatinoroman", "Times New Roman", Times, serif; 
     font-size: 15px;
-    line-height: 20px;
+    line-height: 18px;
 }
 
 .euler {
     font-family: "neo_eulermedium", "Times New Roman", Times, serif;
 }
+
 .captionContainer {
     width: 100%;
     text-align: center;
     padding: 5px 0 0 0;
 }
+
 .caption {
     font-size: 11px;
     line-height: 12px; 
     padding-bottom: 12px;
 }
 
-.caption.euler
-{
+.caption.euler {
     margin-top: -5px;
 }
+
 .imageContainer {
     text-align: center;
     background-color:#FFF;

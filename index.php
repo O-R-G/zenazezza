@@ -7,8 +7,11 @@ if(!$uri[1])
 elseif($uri[1] == 'seasons' && 
 		count($uri) == 4)
 	require_once("views/list.php");
+// elseif($uri[1] == 'seasons' && count($uri) < 2)
+elseif($uri[1] == 'seasons' && !$uri[2])
+	require_once("views/seasons.php");
 elseif($uri[1] == 'seasons')
-	require_once("views/season-main.php");
+	require_once("views/seasons-detail.php");
 else
 	require_once("views/main.php");
 // require_once("views/badge.php");

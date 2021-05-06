@@ -33,17 +33,22 @@ unset($child);
             ?></div>
         </div>
     </main>
-    <aside class="season-children-container"><?
+    <aside class="season-children-container">
+        <div class = 'list-child'>
+            <a class="list-child-link" href = '<?= $url; ?>'>
+                Season <?= $name; ?>
+            </a>
+        </div><?
         if($media){
             foreach($media as $m) {
                 ?><div class = 'list-child'>
                     <img class="list-child-link" src = '<?= m_url($m); ?>' alt = '<?= $m['caption']; ?>'>
-                    <!--
+                    <!-- 
                     <div class='captionContainer'>
                         <div class='caption'>
                             <?= $m['caption']; ?>
                         </div>
-                    </div>
+                    </div> 
                     -->
                 </div><?
             }

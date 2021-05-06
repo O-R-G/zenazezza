@@ -8,8 +8,6 @@ $find = '/<div><br><\/div>/';
 $replace = '';
 $body = preg_replace($find, $replace, $body); 
 
-
-
 $home_id = end($oo->urls_to_ids(array('home')));
 $home_children_photo_raw = $oo->children($home_id);
 $home_children_photo = array();
@@ -24,7 +22,7 @@ foreach($home_children_photo_raw as $child)
     );
 }
 $home_children_installation = array();
-$past_id = end($oo->urls_to_ids(array('seasons','past')));
+$past_id = $oo->urls_to_ids(array('seasons'));
 $past_events = $oo->children($past_id);
 foreach($past_events as $event){
     $this_artist_name = $event['name1'];

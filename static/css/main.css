@@ -523,7 +523,7 @@ ul[depth="2"] .current_sibling {
     display: inline-block;
     vertical-align: top;
 }
-.list-child-link > img {
+img.list-child-link {
     width: 100%;
     padding: 20px;
     filter: grayscale(100%);

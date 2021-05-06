@@ -32,28 +32,33 @@ unset($child);
                 }
             ?></div>
         </div>
-    </main><? 
+    </main>
     <aside class="season-children-container"><?
-        foreach($children as $child){
-            $m = $oo->media($child['id'])[0];
-            if($m != null) {
-                $thumbnail_url = m_url($m);
-                $thumbnail_alt = $m['caption'];
+        if($media){
+            foreach($media as $m) {
+                ?><div class = 'list-child'>
+                    <img class="list-child-link" src = '<?= m_url($m); ?>' alt = '<?= $m['caption']; ?>'>
+                    <!--
+                    <div class='captionContainer'>
+                        <div class='caption'>
+                            <?= $m['caption']; ?>
+                        </div>
+                    </div>
+                    -->
+                </div><?
             }
+        }
+        foreach($children as $child){
             $title = $child['name1'];
             $url = implode('/', $uri) .'/'. $child['url'];
             ?><div class = 'list-child'>
-                <a class="list-child-link" href = '#season-section-<?= $child['url']; ?>'><? 
-                    if($m != null){
-                        ?><img src = '<?= $thumbnail_url; ?>' alt = '<?= $thumbnail_alt; ?>'><?
-                    } 
+                <a class="list-child-link" href = '<?= $url; ?>'><? 
                     ?><h1><?= $title; ?></h1>
                 </a>
             </div><?
         }
-        ?></aside>   
+    ?></aside>   
 </div>
-<!--
 <script type="text/javascript" src="/static/js/screenfull.min.js"></script>
 <script type="text/javascript" src="/static/js/windowfull.js"></script>
 <script>
@@ -72,4 +77,3 @@ unset($child);
         }
     }
 </script>
--->

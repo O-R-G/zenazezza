@@ -44,13 +44,17 @@ if ($season){
                 }
                 foreach($children as $child){
                     $title = $child['name1'];
-                    if (!$season) $title = 'Season ' . $title;
+                    if (!$season) {
+                        $title = 'Season ' . $title;
+                        $deck = $child['deck'];
+                    }
                     $url = implode('/', $uri) .'/'. $child['url'];
                     $child_media = $oo->media($child['id']);
                     ?><div class = 'list-child'>
                         <a class="list-child-link" href = '<?= $url; ?>'><? 
                             ?><h1><?= $title; ?></h1>
-                        </a><?
+                        </a>
+                        <div class='deck'><?= $deck; ?></div><?
                         if($child_media){
                             foreach($child_media as $m) {
                                 ?><img class="list-child-link" src = '<?= m_url($m); ?>' alt = '<?= $m['caption']; ?>'>

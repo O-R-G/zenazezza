@@ -1,3 +1,6 @@
-- views/seasons-main corral image widths
-- rm js hard-assigned image widths
++ views/seasons-main corral image widths
++ rm js hard-assigned image widths
+/ seasons second level subpages
 - check windowfull logic
+  ignore if certain class (see materiaabierta)
+- mobile css

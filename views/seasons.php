@@ -57,12 +57,18 @@ if ($season){
                         <div class='deck'><?= $deck; ?></div><?
                         if($child_media){
                             foreach($child_media as $m) {
-                                ?><img class="list-child-link" src = '<?= m_url($m); ?>' alt = '<?= $m['caption']; ?>'>
+                                if (!$season) {
+                                    ?><a class="list-child-link" href = '<?= $url; ?>'><? 
+                                }
+                                ?><img class="list-child-link <?= (!$season) ? 'no-windowfull' : ''; ?>" src = '<?= m_url($m); ?>' alt = '<?= $m['caption']; ?>'>
                                 <div class='captionContainer'>
                                     <div class='caption'>
                                         <?= $m['caption']; ?>
                                     </div>
                                 </div><?
+                                if (!$season) {
+                                    ?></a><?
+                                }
                             }
                         }
                     ?></div><?
@@ -106,7 +112,8 @@ if ($season){
 <script type="text/javascript" src="/static/js/screenfull.min.js"></script>
 <script type="text/javascript" src="/static/js/windowfull.js"></script>
 <script>
-    var imgs = document.querySelectorAll('img,video');
+    // var imgs = document.querySelectorAll('img,video');
+    var imgs = document.querySelectorAll('img:not(.no-windowfull),video');
     var i;
     var index;
     for (i = 0; i < imgs.length; i++) {

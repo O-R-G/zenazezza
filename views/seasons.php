@@ -5,9 +5,6 @@ $body = $item['body'];
 $notes = $item['notes'];
 $date = $item['begin'];
 $media = $oo->media($item['id']);
-// $find = '/<div><br><\/div>/';
-// $replace = '';
-// $body = preg_replace($find, $replace, $body); 
 $children = $oo->children($item['id']);
 foreach($children as $key => $child)
     if(substr($child['name1'], 0, 1) == '.')
@@ -15,8 +12,9 @@ foreach($children as $key => $child)
 $season = ($uri[2]);
 if ($season){
     $season_uri = $uri;
-    if ($season_uri[3])
+    while (count($season_uri) > 3)
         array_pop($season_uri);
+    $season_url = implode('/', $season_uri);
     array_shift($season_uri);
     $season_id = array_pop($oo->urls_to_ids($season_uri));
     $season = $oo->get($season_id);
@@ -99,7 +97,8 @@ if ($season){
         if ($season_children) {
             foreach($season_children as $child){
                 $title = $child['name1'];
-                $url = implode('/', $uri) .'/'. $child['url'];
+                // $url = implode('/', $uri) .'/'. $child['url'];
+                $url = $season_url .'/'. $child['url'];
                 ?><div class = 'list-child'>
                     <a class="list-child-link" href = '<?= $url; ?>'><? 
                         ?><h1><?= $title; ?></h1>

@@ -531,24 +531,21 @@ img.list-child-link {
 .list-child-link > h1 {
     width: 49%;
 }
-.list-child-link:hover > img
-{
+.list-child-link:hover > img {
     filter: none;
 }
-#layout-container
-{
+#layout-container {
     padding-left: calc(22vw + 30px);
     padding-bottom: 80px;
     /*display: flex;*/
 }
-.season-children-container
-{
+.season-children-container {
     display: inline-block;
     width: 22vw;
     vertical-align: top;
     /*margin-left: 25px;*/
     /*margin-top: 105px;*/
-    position: fixed;
+    position: absolute;
     top: 100px;
     right: 30px;
 }

@@ -108,6 +108,7 @@ if ($season){
         }
     ?></aside>   
 </div>
+<!--
 <script type="text/javascript" src="/static/js/screenfull.min.js"></script>
 <script type="text/javascript" src="/static/js/windowfull.js"></script>
 <script>
@@ -127,3 +128,4 @@ if ($season){
         }
     }
 </script>
+-->

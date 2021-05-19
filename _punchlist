@@ -1,6 +1,18 @@
 + views/seasons-main corral image widths
 + rm js hard-assigned image widths
-/ seasons second level subpages
-- check windowfull logic
-  ignore if certain class (see materiaabierta)
++ seasons second level subpages
++ check windowfull logic ignore if certain class 
++ /home rm zena images, only project images
++ /seasons/images mix season images with reference images (add captions?)
++ /seasons/videos embed videos inline
++ /seasons/events/recordings should be inline, maybe w/image
++ /subscribe campaign monitor
+/ /seasons/events show images in list
+/ /seasons/readings add Read More ... + css
+/ imgs * : fullwindow --> color
+- /books full color inline
 - mobile css
+- reinstate 'current' text from live
+- /support all to center, book imgs no zoom
+? palatino
+

@@ -8,11 +8,11 @@ $find = '/<div><br><\/div>/';
 $replace = '';
 $body = preg_replace($find, $replace, $body); 
 
+/*
 $home_id = end($oo->urls_to_ids(array('home')));
 $home_children_photo_raw = $oo->children($home_id);
 $home_children_photo = array();
-foreach($home_children_photo_raw as $child)
-{
+foreach($home_children_photo_raw as $child) {
     $this_m = $oo->media($child['id'])[0];
     $home_children_photo[] = array(
         'media' => $this_m,
@@ -21,6 +21,7 @@ foreach($home_children_photo_raw as $child)
         'type' => 'zena'
     );
 }
+*/
 $home_children_installation = array();
 $past_id = $oo->urls_to_ids(array('seasons'));
 $past_events = $oo->children($past_id);
@@ -71,11 +72,12 @@ foreach($past_events as $event){
 $home_thumbnail_num_photo = rand(4, 6);
 $home_thumbnail_num_event = rand(4, 6);
 $home_thumbnail_num = $home_thumbnail_num_photo + $home_thumbnail_num_event;
-shuffle($home_children_photo);
-shuffle($home_children_installation);
+// shuffle($home_children_photo);
+// shuffle($home_children_installation);
+/*
 for($i = 0 ; $i < $home_thumbnail_num_photo ; $i++)
     $home_children[] = $home_children_photo[$i];
-
+*/
 for($i = 0 ; $i < $home_thumbnail_num_event ; $i++)
     $home_children[] = $home_children_installation[$i];
 shuffle($home_children);
@@ -83,11 +85,8 @@ shuffle($home_children);
 $time = date('Y-m-d g:i:s A');
 ?><div id='fullwindow'></div>
 <section id="main" class = 'home_main_section'>
-    <div id='content'>
-        
-        <? 
-            foreach($home_children as $h_child)
-            {
+    <div id='content'><? 
+            foreach($home_children as $h_child) {
                 echo displayFloatImage($h_child['media'], $h_child['caption'], $h_child['alt'], $h_child['type']);
                 echo displayNormalImage($h_child['media'], $h_child['caption'], $h_child['alt'], $h_child['type']);
             }
@@ -125,6 +124,4 @@ $time = date('Y-m-d g:i:s A');
         }
 	}
     // var sThumbsContainer = document.getElementsByClassName('thumbsContainer');
-    
-    
 </script>

@@ -47,27 +47,54 @@ if ($season){
                         $deck = $child['deck'];
                     }
                     $url = implode('/', $uri) .'/'. $child['url'];
-                    $child_media = $oo->media($child['id']);
+                    $child_images = $oo->media($child['id']);
+                    if ($child['body']) {
+                        $vimeo = 'vimeo.com';
+                        $youtube = 'youtube.com';
+                        $video = (strpos($child['body'], $vimeo) || strpos($child['body'], $youtube));
+                        if ($video)
+                            $child_video = $child['body'];
+                        else if (!$something_tbd)
+                            $child_reading = $child['body'];
+                        else
+                            // events usually have images so that may be a good way to filter here
+                            $child_event = $child['body'];
+                    }
                     ?><div class = 'list-child'>
                         <a class="list-child-link" href = '<?= $url; ?>'><? 
                             ?><h1><?= $title; ?></h1>
                         </a>
                         <div class='deck'><?= $deck; ?></div><?
-                        if($child_media){
-                            foreach($child_media as $m) {
+                        if($child_event){ 
+                            ?><div class='reading'>
+                                <?= $child_reading; ?>
+                            <div><?
+                        }
+                        if($child_reading){ 
+                            ?><div class='reading'>
+                                <?= $child_reading; ?>
+                            <div><?
+                        }
+                        if($child_images){
+                            foreach($child_images as $i) {
                                 if (!$season) {
                                     ?><a class="list-child-link" href = '<?= $url; ?>'><? 
                                 }
-                                ?><img class="list-child-link <?= (!$season) ? 'no-windowfull' : ''; ?>" src = '<?= m_url($m); ?>' alt = '<?= $m['caption']; ?>'>
+                                ?><img class="list-child-link <?= (!$season) ? 'no-windowfull' : ''; ?>" src = '<?= m_url($i); ?>' alt = '<?= $i['caption']; ?>'>
                                 <div class='captionContainer'>
                                     <div class='caption'>
-                                        <?= $m['caption']; ?>
+                                        <?= $i['caption']; ?>
                                     </div>
                                 </div><?
                                 if (!$season) {
                                     ?></a><?
                                 }
                             }
+                        }
+                        if($child_video){ 
+                            ?><div class='video'>
+                                <?= $child_video; ?>
+                            <div><?
                         }
                     ?></div><?
                 }        
@@ -108,24 +135,19 @@ if ($season){
         }
     ?></aside>   
 </div>
-<!--
-<script type="text/javascript" src="/static/js/screenfull.min.js"></script>
 <script type="text/javascript" src="/static/js/windowfull.js"></script>
 <script>
     // var imgs = document.querySelectorAll('img,video');
     var imgs = document.querySelectorAll('img:not(.no-windowfull),video');
     var i;
     var index;
+
     for (i = 0; i < imgs.length; i++) {
-        if (screenfull.isEnabled) {
-            imgs[i].addEventListener('click', function () {
-                screenfull.toggle(this);
-            }, false);
-        } else {
+        if(!imgs[i].getAttribute('windowfullDisabled')) {
             imgs[i].addEventListener('click', function () {
                 windowfull.toggle(this);
             }, false);
         }
     }
+    // var sThumbsContainer = document.getElementsByClassName('thumbsContainer');
 </script>
--->

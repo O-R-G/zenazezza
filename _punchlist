@@ -7,12 +7,12 @@
 + /seasons/videos embed videos inline
 + /seasons/events/recordings should be inline, maybe w/image
 + /subscribe campaign monitor
-/ /seasons/events show images in list
-/ /seasons/readings add Read More ... + css
-/ imgs * : fullwindow --> color
++ /seasons/events show images in list
++ /seasons/readings add Read More ... + css
 - /books full color inline
+- /support all to center, book imgs no zoom
+- imgs * : fullwindow --> color
 - mobile css
 - reinstate 'current' text from live
-- /support all to center, book imgs no zoom
-? palatino
+- palatino
 

@@ -571,6 +571,31 @@ select:focus
 {
     /*outline: 0;*/
 }
+
+.events, .readings {
+    height: 10em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 1em;
+}
+
+.images {
+}
+
+.videos {
+}
+
+.continues {
+    margin-bottom: 2em;
+}
+
+.continues::after {
+  content: "Continues ...";
+}
+    
+
+
+
 /* vertical iPad / horizontal iPhone */
 @media screen and (max-width: 768px) {
 }

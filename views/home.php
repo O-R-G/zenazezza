@@ -109,7 +109,7 @@ $time = date('Y-m-d g:i:s A');
     <?= $time; ?>
 </div>
 
-<!-- <script type="text/javascript" src="/static/js/screenfull.min.js"></script>	 -->
+<!-- 
 <script type="text/javascript" src="/static/js/windowfull.js"></script>	
 <script>
     var imgs = document.querySelectorAll('img,video');
@@ -125,3 +125,4 @@ $time = date('Y-m-d g:i:s A');
 	}
     // var sThumbsContainer = document.getElementsByClassName('thumbsContainer');
 </script>
+-->

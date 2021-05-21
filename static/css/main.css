@@ -547,7 +547,7 @@ img.list-child-link {
     padding-bottom: 80px;
     /*display: flex;*/
 }
-.season-children-container {
+.sub-children-container {
     display: inline-block;
     width: 22vw;
     vertical-align: top;
@@ -557,7 +557,7 @@ img.list-child-link {
     top: 100px;
     right: 30px;
 }
-.season-title
+.sub-title
 {
     /*position: fixed;
     top: 100px;
@@ -572,7 +572,7 @@ select:focus
     /*outline: 0;*/
 }
 
-.events, .readings {
+.events, .readings, .books {
     height: 10em;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -642,7 +642,7 @@ select:focus
     {
         margin-bottom: 15px;
     }
-    .season-children-container
+    .sub-children-container
     {
         width: auto;
         display: block;

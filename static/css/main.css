@@ -518,10 +518,17 @@ ul[depth="2"] .current_sibling {
     /*padding-left: 30px;*/
     /*margin-left: 22vw;*/
 }
-.list-child
-{
+
+.list-child {
     /*margin-bottom: 15px;*/
 }
+
+.content-container.support .list-child {
+    display: inline-block;
+    /* background-color: #FF0; */
+    width: 50%;
+}
+
 .list-child-link
 {
     display: block;
@@ -536,9 +543,11 @@ img.list-child-link {
     padding: 20px;
     filter: grayscale(100%);
 }
+/*
 .list-child-link > h1 {
     width: 49%;
 }
+*/
 .list-child-link:hover > img {
     filter: none;
 }

@@ -31,7 +31,7 @@ if ($sub){
 
 ?><div id='fullwindow'></div>
 <div id="layout-container">
-    <main id="main" class='content-container'>
+    <main id="main" class='content-container support'>
         <div id='content'>
             <div id='content-text'><?
                 echo $body;
@@ -63,7 +63,7 @@ if ($sub){
                             if($books){ 
                                 ?><div class='books'><?
 									$i = $child_images[0];
-                                    	?><img class="list-child-link" src = '<?= m_url($i); ?>' alt = '<?= $i['caption']; ?>'>
+                                    	?><img class="list-child-link no-windowfull" src = '<?= m_url($i); ?>' alt = '<?= $i['caption']; ?>'>
                                     	<div class='captionContainer'>
                                         	<div class='caption'>
                                             	<?= $i['caption']; ?>
@@ -107,6 +107,9 @@ if ($sub){
                             ?><a class="list-child-link" href = '<?= $url; ?>'>
 								<h1><?= $title; ?></h1>
 							</a>
+                            <div class='body'>
+								<?= $body; ?>
+							</div><
                             <div class='deck'>
 								<?= $deck; ?>
 							</div><?
@@ -131,8 +134,9 @@ if ($sub){
     <aside class="sub-children-container">
         <div class = 'list-child'>
             <a class="list-child-link" href = '<?= $url; ?>'>
-                sub <?= $sub['name1']; ?>
+                <?= $sub['name1']; ?>
             </a>
+            <br/>
         </div><?
         if($sub_media){
             foreach($sub_media as $m) {

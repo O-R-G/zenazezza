@@ -33,30 +33,34 @@ if ($season || $seasons){
 ?><div id='fullwindow'></div>
 <div id="layout-container">
     <main id="main" class='content-container support'>
-        <div id='content'>
-            <div id='content-text'>
-                <div id='body' class='palatino'><?
-                    echo $body;
-                ?></div><?
-                if ($date) {
-                    ?><div id='notes' class='mono'><?
-                        echo date("F j, Y", strtotime($date));
-                        echo '<br/>';
-                        echo $deck;
-                        echo '<br/><br/>';
-                        echo $notes;
+        <div id='content'><?
+            ?><div id='content-text'><?
+                if ($season) {
+                    ?><div id='body' class='palatino'><?
+                        echo $body;
                     ?></div><?
-                }
-                ?><div id='images'><?
-                    foreach ($media as $m) {
-                        ?><img class="" src = '<?= m_url($m); ?>' alt = '<?= $m['caption']; ?>'>
-                        <div class='captionContainer'>
-                            <div class='caption'>
-                            <?= $m['caption']; ?>
-                            </div>
-                        </div><?
+                    if ($date) {
+                        ?><div id='notes' class='mono'><?
+                            echo date("F j, Y", strtotime($date));
+                            echo '<br/>';
+                            echo $deck;
+                            echo '<br/><br/>';
+                            echo $notes;
+                        ?></div><?
                     }
-                ?></div><?
+                    if ($images) {
+                        ?><div id='images'><?
+                            foreach ($media as $m) {
+                                ?><img class="" src = '<?= m_url($m); ?>' alt = '<?= $m['caption']; ?>'>
+                                <div class='captionContainer'>
+                                    <div class='caption'>
+                                    <?= $m['caption']; ?>
+                                    </div>
+                                </div><?
+                            }
+                        ?></div><?
+                    }
+                }
                 if ($sub) {
                     foreach($children as $child){
                         $title = $child['name1'];

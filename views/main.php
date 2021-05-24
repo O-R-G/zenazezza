@@ -9,9 +9,10 @@ $children = $oo->children($item['id']);
 foreach($children as $key => $child)
     if(substr($child['name1'], 0, 1) == '.')
         unset($children[$key]);
-$seasons = ($uri[1] == 'seasons');
-$season = ($uri[2]);
-if ($season || $seasons){
+$sub = ($uri[2]);
+$detail = ($uri[3]);
+$main = !$sub;
+if ($sub){
     $sub_uri = $uri;
     while (count($sub_uri) > 3)
         array_pop($sub_uri);
@@ -24,10 +25,6 @@ if ($season || $seasons){
     foreach($sub_children as $key => $child)
         if(substr($child['name1'], 0, 1) == '.')
             unset($sesson_children[$key]);
-    $events = ($uri[3] == 'events');
-    $readings = ($uri[3] == 'reading');
-    $images = ($uri[3] == 'images');
-    $videos = ($uri[3] == 'videos');
 }
 
 ?><div id='fullwindow'></div>
@@ -60,65 +57,18 @@ if ($season || $seasons){
                 if ($sub) {
                     foreach($children as $child){
                         $title = $child['name1'];
-                        $deck = $child['deck'];
                         $url = implode('/', $uri) .'/'. $child['url'];
                         $child_images = $oo->media($child['id']);
                         ?><div class = 'list-child'>
                             <a class="list-child-link" href = '<?= $url; ?>'>
 							    <h1><?= $title; ?></h1>
 						    </a><?
-                            if($seasons && !$season){
-                                ?><div class='seasons'><?
-                                    echo $deck;
-                                    $i = $child_images[0];
-                                    ?><a class="list-child-link" href = '<?= $url; ?>'>
-                                        <img class="list-child-link no-windowfull" src = '<?= m_url($i); ?>' alt = '<?= $i['caption']; ?>'>
-                                    </a>
-                                </div><?
-                            }
-                            if($events){
-                                ?><div class='events'><?
-                                    $i = $child_images[0];
-                                    ?><img class="list-child-link" src = '<?= m_url($i); ?>' alt = '<?= $i['caption']; ?>'>
-                                    <div class='captionContainer'>
-                                        <div class='caption'>
-                                            <?= $i['caption']; ?>
-                                        </div>
-                                    </div>
-                                    <?= $child['body']; ?>
-                                </div><?
-                            }
-                            if($readings){
-                                ?><div class='readings'>
-                                    <!-- <a href="<?= $child['url']; ?>">Continue reading ...</a> -->
-                                    <?= $child['body']; ?>
-                                </div>
-                                <div class='continues'></div><?
-                            }
-                            if($images){
-                                ?><div class='images'><?
-                                    foreach($child_images as $i) {
-                                        ?><img class="list-child-link" src = '<?= m_url($i); ?>' alt = '<?= $i['caption']; ?>'>
-                                        <div class='captionContainer'>
-                                            <div class='caption'>
-                                                <?= $i['caption']; ?>
-                                            </div>
-                                        </div><?
-                                    }
-                                ?></div><?
-                            }
-                            if($videos){
-                                if ($child['body']) {
-                                    $vimeo = 'vimeo.com';
-                                    $youtube = 'youtube.com';
-                                    $video = (strpos($child['body'], $vimeo) || strpos($child['body'], $youtube));
-                                    if ($video)
-                                        $child_video = $child['body'];
-                                }
-                                ?><div class='video'>
-                                    <?= $child_video; ?>
-                                <div><?
-                            }
+                            $i = $child_images[0];
+                            ?><div class='sub'>
+                                <a class="list-child-link" href = '<?= $url; ?>'>
+                                    <img class="list-child-link no-windowfull" src = '<?= m_url($i); ?>' alt = '<?= $i['caption']; ?>'>
+                                </a>
+							</div><?
                         ?></div><?
                     }
                     ?></div><?
@@ -127,16 +77,11 @@ if ($season || $seasons){
         </div>
     </main>
     <aside class="sub-children-container"><?
-        if ($season) {
-            ?><div class = 'list-child'>
-                <a class="list-child-link" href = '<?= $url; ?>'>
-                    Season <?= $sub['name1']; ?>
-                </a>
-            </div><?
+        if ($sub && $detail) {
             if($sub_media){
                 foreach($sub_media as $m) {
                     ?><div class = 'list-child'>
-                        <img class="list-child-link no-windowfull" src = '<?= m_url($m); ?>' alt = '<?= $m['caption']; ?>'>
+                        <img class="list-child-link" src = '<?= m_url($m); ?>' alt = '<?= $m['caption']; ?>'>
                         <!-- 
                         <div class='captionContainer'>
                             <div class='caption'>

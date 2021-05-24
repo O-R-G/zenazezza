@@ -10,8 +10,9 @@
 + /seasons/events show images in list
 + /seasons/readings add Read More ... + css
 + /support all to center, book imgs no zoom
-- /books full color inline
+x /books full color inline
++ reinstate 'current' text from live
++ palatino
+- euler
 - imgs * : fullwindow --> color
 - mobile css
-- reinstate 'current' text from live
-- palatino

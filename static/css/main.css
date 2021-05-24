@@ -133,7 +133,6 @@ ul > ul > ul{
     padding-right: 100px;
 }
 
-
 #badge-container {
 	position: fixed;
 	right: 0px;
@@ -176,6 +175,10 @@ ul > ul > ul{
 /* use margin instead of <br> */
 #columns div {
     margin-bottom: 22px;
+}
+
+#body {
+    margin-bottom: 1em;
 }
 
 #notes {
@@ -523,11 +526,13 @@ ul[depth="2"] .current_sibling {
     /*margin-bottom: 15px;*/
 }
 
-.content-container.support .list-child {
+/*
+.content-container.support .books-container {
     display: inline-block;
-    /* background-color: #FF0; */
     width: 50%;
+    padding: 10px;
 }
+*/
 
 .list-child-link
 {
@@ -581,11 +586,16 @@ select:focus
     /*outline: 0;*/
 }
 
-.events, .readings, .books {
+.sub, .events, .readings, .books {
     height: 10em;
     overflow: hidden;
     text-overflow: ellipsis;
     margin-bottom: 1em;
+}
+
+.seasons {
+    height: auto;
+
 }
 
 .images {

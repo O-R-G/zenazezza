@@ -31,8 +31,8 @@ if ($sub){
 <div id="layout-container">
     <main id="main" class='content-container support'>
         <div id='content'>
-            <div id='content-text'>
-                <div id='body' class='palatino'><?
+            <div id='content-text' class='palatino'>
+                <div id='body'><?
                     echo $body;
                 ?></div><?
                 if ($date) {
@@ -48,7 +48,7 @@ if ($sub){
                     foreach ($media as $m) {
                         ?><img class="" src = '<?= m_url($m); ?>' alt = '<?= $m['caption']; ?>'>
                         <div class='captionContainer'>
-                            <div class='caption'>
+                            <div class='caption euler'>
                             <?= $m['caption']; ?>
                             </div>
                         </div><?
@@ -61,7 +61,7 @@ if ($sub){
                         $child_images = $oo->media($child['id']);
                         ?><div class = 'list-child'>
                             <a class="list-child-link" href = '<?= $url; ?>'>
-							    <h1><?= $title; ?></h1>
+							    <?= $title; ?>
 						    </a><?
                             $i = $child_images[0];
                             ?><div class='sub'>
@@ -84,7 +84,7 @@ if ($sub){
                         <img class="list-child-link" src = '<?= m_url($m); ?>' alt = '<?= $m['caption']; ?>'>
                         <!-- 
                         <div class='captionContainer'>
-                            <div class='caption'>
+                            <div class='caption euler'>
                                 <?= $m['caption']; ?>
                             </div>
                         </div> 
@@ -99,7 +99,7 @@ if ($sub){
                     $url = $sub_url .'/'. $child['url'];
                     ?><div class = 'list-child'>
                         <a class="list-child-link" href = '<?= $url; ?>'><? 
-                            ?><h1><?= $title; ?></h1>
+                            ?><?= $title; ?>
                         </a>
                     </div><?
                 }

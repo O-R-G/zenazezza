@@ -23,8 +23,6 @@ body {
 }
 
 h1,h2,h3 {
-    font-size: 15.5px;
-    line-height: 18px;
     font-weight: normal;
 }
 
@@ -74,9 +72,13 @@ a.reverse:hover {
 b {
     font-weight: normal;
     color: #D70;
+    text-decoration-line: underline;
+    text-decoration-style: wavy;
 }
 
 i {
+    font-style: normal;
+	font-family: "neo_eulermedium", Helvetica, Arial, sans-serif; 
 }
 
 header {
@@ -267,7 +269,8 @@ ul > ul > ul{
 }
 
 #content-text {
-    margin-top: 100px;
+    margin-top: 96px;
+    padding-right: 50px;
 }
 
 #content-text > iframe {
@@ -399,14 +402,20 @@ ul > ul > ul{
     padding-bottom: 22px;
 }
 
+.optima {
+	font-family: "optimaroman", Helvetica, Arial, sans-serif; 
+    font-size: 15.5px;
+    line-height: 18px;
+}
+
 .palatino {
     font-family: "palatinoroman", "Times New Roman", Times, serif; 
-    font-size: 15px;
+    font-size: 15.45px;
     line-height: 18px;
 }
 
 .euler {
-    font-family: "neo_eulermedium", "Times New Roman", Times, serif;
+	font-family: "neo_eulermedium", Helvetica, Arial, sans-serif; 
 }
 
 .captionContainer {

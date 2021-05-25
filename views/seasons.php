@@ -34,7 +34,7 @@ if ($season || $seasons){
 <div id="layout-container">
     <main id="main" class='content-container support'>
         <div id='content'><?
-            ?><div id='content-text'><?
+            ?><div id='content-text' class='palatino'><?
                 if ($season) {
                     ?><div id='body' class='palatino'><?
                         echo $body;
@@ -53,7 +53,7 @@ if ($season || $seasons){
                             foreach ($media as $m) {
                                 ?><img class="" src = '<?= m_url($m); ?>' alt = '<?= $m['caption']; ?>'>
                                 <div class='captionContainer'>
-                                    <div class='caption'>
+                                    <div class='caption euler'>
                                     <?= $m['caption']; ?>
                                     </div>
                                 </div><?
@@ -69,23 +69,33 @@ if ($season || $seasons){
                         $child_images = $oo->media($child['id']);
                         ?><div class = 'list-child'>
                             <a class="list-child-link" href = '<?= $url; ?>'>
-							    <h1><?= $title; ?></h1>
+							    <?= $title; ?>
 						    </a><?
                             if($seasons && !$season){
-                                ?><div class='seasons'><?
-                                    echo $deck;
+                                ?><div class='seasons'>
+                                    <div class='dates'><?
+                                        echo $deck;
+                                    ?></div><?
                                     $i = $child_images[0];
+                                    if (empty($i)) 
+                                        $u = '/media/jpg/label.jpg';
+                                    else 
+                                        $u = m_url($i);
                                     ?><a class="list-child-link" href = '<?= $url; ?>'>
-                                        <img class="list-child-link no-windowfull" src = '<?= m_url($i); ?>' alt = '<?= $i['caption']; ?>'>
+                                        <img class="list-child-link no-windowfull" src = '<?= $u; ?>' alt = '<?= $i['caption']; ?>'>
                                     </a>
                                 </div><?
                             }
                             if($events){
                                 ?><div class='events'><?
                                     $i = $child_images[0];
-                                    ?><img class="list-child-link" src = '<?= m_url($i); ?>' alt = '<?= $i['caption']; ?>'>
+                                    if (empty($i)) 
+                                        $u = '/media/jpg/label.jpg';
+                                    else 
+                                        $u = m_url($i);
+                                    ?><img class="list-child-link" src = '<?= $u; ?>' alt = '<?= $i['caption']; ?>'>
                                     <div class='captionContainer'>
-                                        <div class='caption'>
+                                        <div class='caption euler'>
                                             <?= $i['caption']; ?>
                                         </div>
                                     </div>
@@ -104,7 +114,7 @@ if ($season || $seasons){
                                     foreach($child_images as $i) {
                                         ?><img class="list-child-link" src = '<?= m_url($i); ?>' alt = '<?= $i['caption']; ?>'>
                                         <div class='captionContainer'>
-                                            <div class='caption'>
+                                            <div class='caption euler'>
                                                 <?= $i['caption']; ?>
                                             </div>
                                         </div><?
@@ -143,7 +153,7 @@ if ($season || $seasons){
                         <img class="list-child-link no-windowfull" src = '<?= m_url($m); ?>' alt = '<?= $m['caption']; ?>'>
                         <!-- 
                         <div class='captionContainer'>
-                            <div class='caption'>
+                            <div class='caption euler'>
                                 <?= $m['caption']; ?>
                             </div>
                         </div> 
@@ -158,7 +168,7 @@ if ($season || $seasons){
                     $url = $sub_url .'/'. $child['url'];
                     ?><div class = 'list-child'>
                         <a class="list-child-link" href = '<?= $url; ?>'><? 
-                            ?><h1><?= $title; ?></h1>
+                            ?><?= $title; ?>
                         </a>
                     </div><?
                 }

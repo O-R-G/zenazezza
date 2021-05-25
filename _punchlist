@@ -15,4 +15,6 @@ x /books full color inline
 + palatino
 - euler
 - imgs * : fullwindow --> color
+- baseline align
+- placeholder img if no img available
 - mobile css

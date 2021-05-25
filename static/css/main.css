@@ -70,10 +70,8 @@ a.reverse:hover {
 }
 
 b {
+    /* color: #D70; */
     font-weight: normal;
-    color: #D70;
-    text-decoration-line: underline;
-    text-decoration-style: wavy;
 }
 
 i {
@@ -99,6 +97,46 @@ ul {
 ul > ul > ul{
     padding-left: 20px;
 }
+
+select, button, input {
+    /* display: block; */
+	font-family: "optimaroman", Helvetica, Arial, sans-serif; 
+    font-size: 13px;
+    line-height: 18px;
+    padding: 5px 0px 1px 10px;
+    margin-right: 10px;
+    text-align: left;
+}
+
+select {
+    width: 50%;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: 1px solid #D70;
+    color: #D70;
+    background-color: #FFF;
+    background: url(/media/svg/v-9-k.svg) 96% / 6% no-repeat #FFF;
+}
+
+button, input {
+    display: inline-block;
+    width: 25%;
+    border: 1px solid #D70;
+    cursor: pointer;
+    color: #D70;
+    background-color: #FFF;
+}
+
+select:hover, button:hover {
+    border: 1px solid #000;
+    color: #000;
+}
+
+input {
+    width: 50%;
+}
+
 
 /* ids */
 
@@ -620,8 +658,23 @@ select:focus
 .continues::after {
   content: "Continues ...";
 }
-    
 
+.wavy {
+    display: block;
+    color: transparent;
+    text-align: center;
+    text-decoration-color: #D70;
+    text-decoration-line: underline;
+    text-decoration-style: wavy;
+    overflow: hidden;
+    margin-top: 18px;
+    margin-bottom: 36px;
+}
+
+.wavy:after {
+    content: '....................................';
+}
+    
 
 
 /* vertical iPad / horizontal iPhone */

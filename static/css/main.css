@@ -392,7 +392,7 @@ input {
     height: 100% !important;
 	padding: initial;
     object-fit: contain;
-    filter: initial;
+    filter(grayscale(100%));
     z-index: +1;
 }
 
@@ -653,10 +653,6 @@ select:focus
 
 .continues {
     margin-bottom: 2em;
-}
-
-.continues::after {
-  content: "Continues ...";
 }
 
 .wavy {

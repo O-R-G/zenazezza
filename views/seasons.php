@@ -36,7 +36,21 @@ if ($season || $seasons){
         <div id='content'><?
             ?><div id='content-text' class='palatino'><?
                 if ($season) {
-                    ?><div id='body' class='palatino'><?
+                    if ($readings && $uri[4]) {
+                        ?><div id='name'>
+                            <a class="list-child-link" href = ''>
+							    <?= $name; ?>
+						    </a>
+                        </div>
+                        <div id='deck'>							    
+                            <?= $deck . '<br/><br/>'; ?>
+                        </div>
+                        <!-- 
+                        <div class='wavy'>
+                        </div>
+                        --><?
+                    }
+                    ?><div id='body'><?
                         echo $body;
                     ?></div><?
                     if ($date) {
@@ -93,7 +107,9 @@ if ($season || $seasons){
                                         $u = '/media/jpg/label.jpg';
                                     else 
                                         $u = m_url($i);
-                                    ?><img class="list-child-link" src = '<?= $u; ?>' alt = '<?= $i['caption']; ?>'>
+                                    ?><a class = 'list-child-link' href = '<?= $url; ?>'>
+                                        <img class="list-child-link no-windowfull" src = '<?= $u; ?>' alt = '<?= $i['caption']; ?>'>
+                                    </a>
                                     <div class='captionContainer'>
                                         <div class='caption euler'>
                                             <?= $i['caption']; ?>
@@ -104,10 +120,14 @@ if ($season || $seasons){
                             }
                             if($readings){
                                 ?><div class='readings'>
-                                    <!-- <a href="<?= $child['url']; ?>">Continue reading ...</a> -->
+                                    <?= $child['deck']; ?><br/><br/>
                                     <?= $child['body']; ?>
                                 </div>
-                                <div class='continues'></div><?
+                                <div class='continues'>
+                                    <a href="<?= $url; ?>">
+                                        Continue reading ...
+                                    </a>
+                                </div><?
                             }
                             if($images){
                                 ?><div class='images'><?

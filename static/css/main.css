@@ -137,6 +137,13 @@ input {
     width: 50%;
 }
 
+iframe {
+    /* based on #main width */
+    width: calc(56vw - 120px);
+    height: calc((56vw - 120px) * .5625);
+    padding: 20px;
+}
+
 
 /* ids */
 

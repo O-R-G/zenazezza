@@ -46,17 +46,32 @@ if ($season || $seasons){
                             <?= $deck . '<br/><br/>'; ?>
                         </div>
                         <!-- <div class='wavy'></div> --><?
-                    }
-                    if ($season && !$uri[3]) {
+                        ?><div id='body'><?
+                            echo $body;
+                        ?></div><?
+                        foreach ($media as $m) {
+                            ?><img class="" src = '<?= m_url($m); ?>' alt = '<?= $m['caption']; ?>'>
+                            <div class='captionContainer'>
+                                <div class='caption euler'>
+                                    <?= $m['caption']; ?>
+                                </div>
+                            </div><?
+                        }
+                        ?></div><?
+                    } else if ($season && !$uri[3]) {
                         ?><div class = 'list-child'>
                             <a class="list-child-link" href = '<?= $url; ?>'>
                                 Season <?= $sub['name1']; ?>
                             </a>
-                        </div><?    
+                        </div>
+                        <div id='body'><?
+                            echo $body;
+                        ?></div><?
+                    } else {
+                        ?><div id='body'><?
+                            echo $body;
+                        ?></div><?
                     }
-                    ?><div id='body'><?
-                        echo $body;
-                    ?></div><?
                     if ($date) {
                         ?><div id='notes' class='mono'><?
                             echo date("F j, Y", strtotime($date));
@@ -72,7 +87,7 @@ if ($season || $seasons){
                                 ?><img class="" src = '<?= m_url($m); ?>' alt = '<?= $m['caption']; ?>'>
                                 <div class='captionContainer'>
                                     <div class='caption euler'>
-                                    <?= $m['caption']; ?>
+                                        <?= $m['caption']; ?>
                                     </div>
                                 </div><?
                             }

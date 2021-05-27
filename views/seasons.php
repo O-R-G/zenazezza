@@ -30,7 +30,9 @@ if ($season || $seasons){
     $videos = ($uri[3] == 'videos');
 }
 
-?><div id='fullwindow'></div>
+?><div id='fullwindow'>
+    <div id='x'><img src='/media/svg/x-6-k.svg'></div>
+</div>
 <div id="layout-container">
     <main id="main" class='content-container support'>
         <div id='content'><?
@@ -122,28 +124,45 @@ if ($season || $seasons){
                                 </div><?
                             }
                             if($events){
-                                ?><div class='events'><?
+                                if ($child['body']){
+                                    $vimeo = 'vimeo.com';
+                                    $youtube = 'youtube.com';
+                                    $video = (strpos($child['body'], $vimeo) || strpos($child['body'], $youtube));
+                                    if ($video)
+                                        $child_video = $child['body'];
+                                }
+                                if ($child_video){
+                                    ?><div class = 'title'>
+                                        <a class="list-child-link" href = '<?= $url; ?>'>
+		            					    <?= $title; ?>
+      			    	        		</a>
+                                    </div>
+                                    <div class='videos'>
+                                        <?= $child_video; ?>
+                                    </div><?
+                                } else {
                                     $i = $child_images[0];
                                     if (empty($i)) 
                                         $u = '/media/jpg/label.jpg';
                                     else 
                                         $u = m_url($i);
-                                    ?>
-                                    <div class = 'title'>
-                                        <a class="list-child-link" href = '<?= $url; ?>'>
-		        					        <?= $title; ?>
-    				        		    </a>
-                                    </div>
-                                    <a class = 'list-child-link' href = '<?= $url; ?>'>
-                                        <img class="list-child-link no-windowfull" src = '<?= $u; ?>' alt = '<?= $i['caption']; ?>'>
-                                    </a>
-                                    <div class='captionContainer'>
-                                        <div class='caption euler'>
-                                            <?= $i['caption']; ?>
+                                    ?><div class='events'>
+                                        <div class = 'title'>
+                                            <a class="list-child-link" href = '<?= $url; ?>'>
+		            					        <?= $title; ?>
+      			    	        		    </a>
+                                        </div><?
+
+                                        ?><a class = 'list-child-link' href = '<?= $url; ?>'>
+                                            <img class="list-child-link no-windowfull" src = '<?= $u; ?>' alt = '<?= $i['caption']; ?>'>
+                                        </a>
+                                        <div class='captionContainer'>
+                                            <div class='caption euler'>
+                                                <?= $i['caption']; ?>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <?= $child['body']; ?>
-                                </div><?
+                                    </div><?
+                                }
                             }
                             if($readings){
                                 ?><div class='readings'>
@@ -163,13 +182,13 @@ if ($season || $seasons){
                             }
                             if($images){
                                 ?><div class='images'><?
+                                    ?><div class = 'title'>
+                                        <a class="list-child-link" href = '<?= $url; ?>'>
+		        					        <?= $title; ?>
+    				        		    </a>
+                                    </div><?
                                     foreach($child_images as $i) {
-                                        ?><div class = 'title'>
-                                            <a class="list-child-link" href = '<?= $url; ?>'>
-		        					            <?= $title; ?>
-    				        		        </a>
-                                        </div>
-                                        <img class="list-child-link" src = '<?= m_url($i); ?>' alt = '<?= $i['caption']; ?>'>
+                                        ?><img class="list-child-link" src = '<?= m_url($i); ?>' alt = '<?= $i['caption']; ?>'>
                                         <div class='captionContainer'>
                                             <div class='caption euler'>
                                                 <?= $i['caption']; ?>
@@ -187,7 +206,7 @@ if ($season || $seasons){
                                         $child_video = $child['body'];
                                 }
                                 ?>
-                                <div class='video'>
+                                <div class='videos'>
                                     <div class = 'title'>
                                         <a class="list-child-link" href = '<?= $url; ?>'>
 		        					        <?= $title; ?>

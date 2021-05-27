@@ -16,7 +16,8 @@ $uu = new URL();
 if($uu->id)
 	$item = $oo->get($uu->id);
 else
-	$item = $oo->get(0);
+	// $item = $oo->get(0);    
+	$item = $oo->get(1);    // _Home id
 $name = ltrim(strip_tags($item["name1"]), ".");
 $id_arr_raw = $uu->ids;
 // var_dump($id_arr_raw);
@@ -53,26 +54,15 @@ if($uu->id) {
 		<link rel="stylesheet" href="/static/css/main.css">
 		<link rel="apple-touch-icon" href="/media/png/touchicon.png" />
 	</head>
-	<body>
-		<script>
-			var body = document.body;
-			if(window.innerWidth < 500)
-		    {
-		        body.classList.add('mobile');
-		    }
-		</script>
-		<?
+	<body><?
 	    if(!$uu->id) {
     	    ?><header id="menu" class="homepage"><?
-	    }
-	    else if($show_menu) {
+	    } else if($show_menu) {
     	    ?><header id="menu" class="visible"><?
-	    }
-	    else {
+	    } else {
     	    ?><header id="menu" class="hidden"><?
 	    }
-	    ?>
-	    <div id = 'site-info'>
+	    ?><div id = 'site-info'>
 	    	<p><a class = 'reverse' href = '/'>Zena Zezza</a></p>
 	    	<p>Portland, Oregon</p>
 	    	<p>USA</p>

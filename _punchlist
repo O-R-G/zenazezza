@@ -13,8 +13,12 @@
 x /books full color inline
 + reinstate 'current' text from live
 + palatino
-- euler
-- imgs * : fullwindow --> color
-- baseline align
-- placeholder img if no img available
-- mobile css
++ euler
++ /home
++ baseline align
++ placeholder img if no img available
++ integrate event recordings
++ badge href
++ .social
++ imgs * : fullwindow --> color, X
++ mobile css

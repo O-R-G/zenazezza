@@ -139,8 +139,8 @@ input {
 
 iframe {
     /* based on #main width */
-    width: calc(56vw - 120px);
-    height: calc((56vw - 120px) * .5625);
+    width: calc(56vw - 120px - 50px);
+    height: calc((56vw - 120px - 50px) * .5625);
     padding: 20px;
 }
 
@@ -163,6 +163,7 @@ iframe {
     display: inline-block;
     width: calc(56vw - 120px);
     /*padding-bottom: 60px;*/
+    padding-right: 50px;
     vertical-align: top;
 }
 
@@ -174,7 +175,7 @@ iframe {
     clear: both;
 }
 
-#main.home_main_section {
+#main.home {
     width: auto;
     padding-left: 100px;
     padding-right: 100px;
@@ -298,6 +299,13 @@ iframe {
     z-index: +1;
 }
 
+#fullwindow #x {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 50px;
+}
+
 #site-info > p {
     margin: 0;
 }
@@ -315,7 +323,6 @@ iframe {
 
 #content-text {
     margin-top: 96px;
-    padding-right: 50px;
 }
 
 #content-text > iframe {
@@ -399,7 +406,7 @@ iframe {
     height: 100% !important;
 	padding: initial;
     object-fit: contain;
-    filter(grayscale(100%));
+    filter: initial !important;
     z-index: +1;
 }
 
@@ -486,76 +493,75 @@ iframe {
     display: inline-block;
 }
 
-
 .current_sibling {
     display: none;
 }
+
 ul[depth="2"] .current_sibling {
     display: block;
 }
+
 .thumbsContainer {
     float: right;
 }
+
 .thumbsContainer img {
     filter: grayscale(100%);
 }
-.thumbsContainer.event .fullwindow
-{
+
+.thumbsContainer.event .fullwindow {
     filter:none;
 }
-.thumbsContainer.zena
-{
+
+.thumbsContainer.zena {
     float: right;
     clear: right;
 }
-.thumbsContainer.event
-{
+
+.thumbsContainer.event {
     float: left;
     clear: left;
 }
-.home_main_section
-{
+
+.home {
     margin-top: 90px;
 }
-.home_main_section #content
-{
+
+.home #content {
     padding-left: 1em;
     width: initial;
 }
-.isFullwindow #menu
-{
+
+.isFullwindow #menu {
     display: none;
 }
-.timeContainer {
+
+.time,
+.social {
+    display: inline-block;
     position: absolute;
-    left: 40px;
-    text-align: left;
     padding-top: 10px;
     padding-bottom: 10px;
 }
-.timeContainer img
-{
-    width: 20px;
+
+.time {
+    left: 30px;
 }
+
+.social {
+    right: 30px;
+}
+
+.social img {
+    width: 15px;
+}
+
 .highlight, a.reverse.highlight
 {
     /*color: #FC0; */
     color: #D70;
 }
-.mobile_thumbnail
-{
-    display: none;
-}
-.mobile .thumbsContainer
-{
-    display: none;
-}
-.mobile .thumbsContainer.mobile_thumbnail
-{
-    display: initial;
-    margin-bottom: 30px;
-    /*float: none;*/
-}
+
 .paypalbutton
 {
     /*background-color: #FC0;*/
@@ -686,55 +692,70 @@ select:focus
 
 /* vertical iPhone */
 @media screen and (max-width: 500px) {
-    #menu
-    {
+    #menu {
         position: static;
         margin-top: 120px;
         padding: 1em;
         max-width: initial;
         max-height: initial;
     }
-    #main
-    {
+
+    #main,
+    #main.home {
         margin-top: 30px;
-        /*padding-bottom: 50px;*/
         display: block;
         width: auto;
+        padding: 0px;
     }
-    .content-container
-    {
+
+    .content-container {
         width: initial;
         padding-left: 0;
     }
-    #content-text
-    {
+
+    #content-text {
         margin-top: 30px;
     }
-    #content-image
-    {
+
+    #content-image {
         margin-bottom: 0;
     }
-    .home_main_section #content
-    {
+
+    .thumbsContainer {
+        width: initial !important;
+        margin: initial !important;
+        float: initial !important;
+    }
+
+    .home #content{
         padding-left: 0;
     }
-    #layout-container
-    {
+
+    #layout-container {
         padding-left: 0;
     }
-    .list-child
-    {
+
+    /*
+    .list-child {
         margin-bottom: 15px;
     }
-    .sub-children-container
-    {
+    */
+
+    .sub-children-container {
+        position: static;
         width: auto;
         display: block;
-        margin-left: 0;
         margin-top: 30px;
+        margin-left: 0;
+        padding-bottom: 50px;
     }
-    #layout-container
-    {
+
+    .sub-children-container img {
+        padding: 0px;
+        padding-bottom: 15px;
+    }
+
+    #layout-container {
         padding-bottom: 50px;
     }
 }

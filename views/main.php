@@ -27,7 +27,9 @@ if ($sub){
             unset($sesson_children[$key]);
 }
 
-?><div id='fullwindow'></div>
+?><div id='fullwindow'>
+    <div id='x'><img src='/media/svg/x-6-k.svg'></div>
+</div>
 <div id="layout-container">
     <main id="main" class='content-container support'>
         <div id='content'>

@@ -6,6 +6,10 @@ $notes = $item['notes'];
 $date = $item['begin'];
 $media = $oo->media($item['id']);
 $children = $oo->children($item['id']);
+if ($uri[2] == 'zena') {
+    $child = $children[array_rand($children)];
+    $media = $oo->media($child['id']);
+}
 foreach($children as $key => $child)
     if(substr($child['name1'], 0, 1) == '.')
         unset($children[$key]);

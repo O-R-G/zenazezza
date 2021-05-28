@@ -22,3 +22,24 @@ x /books full color inline
 + .social
 + imgs * : fullwindow --> color, X
 + mobile css
+- comprehensive review including mobile, fixes
+? zena label / alternate placholder img
++ /events
+  /events/event-images
+  redundant, move into individual events
+x move recording to top of entry before images
++ /about
+  add zena zezza random image links x 3
++ add /news category
+  About
+  News
+  Seasons
+  Support
+  Subscribe
++ move Subscribe to News?
++ /seasons
+  add links to each venue at the start of each season text
+- open-records-generator
+  finish user manual custom for zena, send --> sandra
+- transfer all to live server, adjust certificates, etc 
+  launch friday june 4!

@@ -53,7 +53,7 @@ if ($sub){
                 }
                 ?><div id='images'><?
                     foreach ($media as $m) {
-                        ?><img class="" src = '<?= m_url($m); ?>' alt = '<?= $m['caption']; ?>'>
+                        ?><img class='<?= ($uri[2] == "books-for-purchase") ? "color" : ""; ?>' src = '<?= m_url($m); ?>' alt = '<?= $m['caption']; ?>'>
                         <div class='captionContainer'>
                             <div class='caption euler'>
                                 <?= $m['caption']; ?>

@@ -332,6 +332,10 @@ input {
     filter: grayscale(100%);
 }
 
+#images .color {
+    filter: initial;
+}
+
 
 
 /* classes */

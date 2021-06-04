@@ -6,7 +6,8 @@ $notes = $item['notes'];
 $date = $item['begin'];
 $media = $oo->media($item['id']);
 $children = $oo->children($item['id']);
-if ($uri[2] == 'zena') {
+$zena = ($uri[2] == 'zena'); 
+if ($zena) {
     $child = $children[array_rand($children)];
     $media = $oo->media($child['id']);
 }
@@ -55,9 +56,12 @@ if ($sub){
                         ?><img class="" src = '<?= m_url($m); ?>' alt = '<?= $m['caption']; ?>'>
                         <div class='captionContainer'>
                             <div class='caption euler'>
-                            <?= $m['caption']; ?>
+                                <?= $m['caption']; ?>
                             </div>
                         </div><?
+                        if ($zena) {
+                            ?><a href=''>Another?</a> or <a href='/about'>Back to About . . .</a><?
+                        }                        
                     }
                 ?></div><?
                 if ($sub) {

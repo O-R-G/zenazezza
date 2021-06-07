@@ -1,7 +1,7 @@
-AuthUserFile /var/www/.htpasswd
-AuthName "OPEN-RECORDS-GENERATOR"
-AuthType Basic
-Require valid-user
+# AuthUserFile /var/www/.htpasswd
+# AuthName "OPEN-RECORDS-GENERATOR"
+# AuthType Basic
+# Require valid-user
 
 Options +FollowSymLinks -Indexes
 # Options +FollowSymLinks +Indexes

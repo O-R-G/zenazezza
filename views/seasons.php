@@ -24,10 +24,10 @@ if ($season || $seasons){
     foreach($sub_children as $key => $child)
         if(substr($child['name1'], 0, 1) == '.')
             unset($sesson_children[$key]);
-    $events = ($uri[3] == 'events');
-    $readings = ($uri[3] == 'reading');
-    $images = ($uri[3] == 'images');
-    $videos = ($uri[3] == 'videos');
+    $events = isset($uri[3]) && ($uri[3] == 'events');
+    $readings = isset($uri[3]) && ($uri[3] == 'reading');
+    $images = isset($uri[3]) && ($uri[3] == 'images');
+    $videos = isset($uri[3]) && ($uri[3] == 'videos');
 }
 
 ?><div id='fullwindow'>
@@ -52,15 +52,19 @@ if ($season || $seasons){
                             echo $body;
                         ?></div><?
                         foreach ($media as $m) {
-                            ?><img class="" src = '<?= m_url($m); ?>' alt = '<?= $m['caption']; ?>'>
-                            <div class='captionContainer'>
-                                <div class='caption euler'>
-                                    <?= $m['caption']; ?>
-                                </div>
-                            </div><?
+                            $caption = $m['caption'];
+                            if(strpos($caption, '[hidden]') === false)
+                            {
+                                ?><img class="" src = '<?= m_url($m); ?>' alt = '<?= $m['caption']; ?>'>
+                                <div class='captionContainer'>
+                                    <div class='caption euler'>
+                                        <?= $m['caption']; ?>
+                                    </div>
+                                </div><?
+                            }
                         }
                         ?></div><?
-                    } else if ($season && !$uri[3]) {
+                    } else if ($season && !isset($uri[3])) {
                         ?><div class = 'list-child'>
                             <a class="list-child-link" href = '<?= $url; ?>'>
                                 Season <?= $sub['name1']; ?>

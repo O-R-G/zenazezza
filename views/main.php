@@ -53,15 +53,19 @@ if ($sub){
                 }
                 ?><div id='images'><?
                     foreach ($media as $m) {
-                        ?><img class='<?= ($uri[2] == "books-for-purchase") ? "color" : ""; ?>' src = '<?= m_url($m); ?>' alt = '<?= $m['caption']; ?>'>
-                        <div class='captionContainer'>
-                            <div class='caption euler'>
-                                <?= $m['caption']; ?>
-                            </div>
-                        </div><?
-                        if ($zena) {
-                            ?><a href=''>Another?</a> or <a href='/about'>Back to About . . .</a><?
-                        }                        
+                        $caption = $m['caption'];
+                        if(strpos($caption, '[hidden]') === false)
+                        {
+                            ?><img class='<?= ($uri[2] == "books-for-purchase") ? "color" : ""; ?>' src = '<?= m_url($m); ?>' alt = '<?= $m['caption']; ?>'>
+                            <div class='captionContainer'>
+                                <div class='caption euler'>
+                                    <?= $m['caption']; ?>
+                                </div>
+                            </div><?
+                            if ($zena) {
+                                ?><a href=''>Another?</a> or <a href='/about'>Back to About . . .</a><?
+                            }
+                        }
                     }
                 ?></div><?
                 if ($sub) {
@@ -73,12 +77,20 @@ if ($sub){
                             <a class="list-child-link" href = '<?= $url; ?>'>
 							    <?= $title; ?>
 						    </a><?
-                            $i = $child_images[0];
-                            ?><div class='sub'>
-                                <a class="list-child-link" href = '<?= $url; ?>'>
-                                    <img class="list-child-link no-windowfull" src = '<?= m_url($i); ?>' alt = '<?= $i['caption']; ?>'>
-                                </a>
-							</div><?
+                            for($idx = 0; $idx < count($child_images); $idx++)
+                            {
+                                $caption = $child_images[$idx]['caption'];
+                                if(strpos($caption, '[hidden]') === false)
+                                {
+                                    $i = $child_images[$idx];
+                                    ?><div class='sub'>
+                                        <a class="list-child-link" href = '<?= $url; ?>'>
+                                            <img class="list-child-link no-windowfull" src = '<?= m_url($i); ?>' alt = '<?= $i['caption']; ?>'>
+                                        </a>
+                                    </div><?
+                                    break;
+                                }
+                            }
                         ?></div><?
                     }
                     ?></div><?
@@ -90,16 +102,20 @@ if ($sub){
         if ($sub && $detail) {
             if($sub_media){
                 foreach($sub_media as $m) {
-                    ?><div class = 'list-child'>
-                        <img class="list-child-link" src = '<?= m_url($m); ?>' alt = '<?= $m['caption']; ?>'>
-                        <!-- 
-                        <div class='captionContainer'>
-                            <div class='caption euler'>
-                                <?= $m['caption']; ?>
-                            </div>
-                        </div> 
-                        -->
-                    </div><?
+                    $caption = $m['caption'];
+                    if(strpos($caption, '[hidden]') === false)
+                    {
+                        ?><div class = 'list-child'>
+                            <img class="list-child-link" src = '<?= m_url($m); ?>' alt = '<?= $m['caption']; ?>'>
+                            <!-- 
+                            <div class='captionContainer'>
+                                <div class='caption euler'>
+                                    <?= $m['caption']; ?>
+                                </div>
+                            </div> 
+                            -->
+                        </div><?
+                    }
                 }
             }
             if ($sub_children) {

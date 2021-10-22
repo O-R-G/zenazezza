@@ -16,7 +16,8 @@ function nav_zenazezza($ids, $oo, $root_id=0)
 	foreach($top as $t)
 	{
 		$o = $oo->get($t);
-		$d = $root+1;
+		// $d = $root+1;
+		$d = $root_index+1;
 		$urls = array($o['url']);
 		$url = implode("/", $urls);			
 		$nav[] = array('depth'=>$d, 'o'=>$o, 'url'=>$url);

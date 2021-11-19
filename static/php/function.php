@@ -22,7 +22,7 @@ function nav_zenazezza($ids, $oo, $root_id=0)
 		$url = implode("/", $urls);			
 		$nav[] = array('depth'=>$d, 'o'=>$o, 'url'=>$url);
 		
-		if($pass && $t == $ids[$root_index])
+		if($pass && isset($ids[$root_index]) && $t == $ids[$root_index])
 		{
 			$pass = false; // short-circuit if statement
 			$kids = $oo->children_ids_nav(end($ids));

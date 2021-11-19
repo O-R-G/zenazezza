@@ -6,7 +6,7 @@ $notes = $item['notes'];
 $date = $item['begin'];
 $media = $oo->media($item['id']);
 $children = $oo->children($item['id']);
-$zena = ($uri[2] == 'zena'); 
+$zena = (isset($uri[2]) && $uri[2] == 'zena'); 
 if ($zena) {
     $child = $children[array_rand($children)];
     $media = $oo->media($child['id']);
@@ -14,8 +14,8 @@ if ($zena) {
 foreach($children as $key => $child)
     if(substr($child['name1'], 0, 1) == '.')
         unset($children[$key]);
-$sub = ($uri[2]);
-$detail = ($uri[3]);
+$sub = isset($uri[2]) ? ($uri[2]) : '';
+$detail = isset($uri[3]) ? ($uri[3]) : '';
 $main = !$sub;
 if ($sub){
     $sub_uri = $uri;

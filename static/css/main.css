@@ -481,7 +481,8 @@ input {
 }
 
 .caption.euler {
-    margin-top: -5px;
+    margin-top: -25px;
+    margin-bottom: 10px;
 }
 
 .imageContainer {

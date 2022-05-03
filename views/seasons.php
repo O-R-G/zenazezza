@@ -10,24 +10,25 @@ foreach($children as $key => $child)
     if(substr($child['name1'], 0, 1) == '.')
         unset($children[$key]);
 $seasons = ($uri[1] == 'seasons');
-$season = ($uri[2]);
+$season = isset($uri[2]) ? ($uri[2]) : false;
 if ($season || $seasons){
     $sub_uri = $uri;
     while (count($sub_uri) > 3)
         array_pop($sub_uri);
     $sub_url = implode('/', $sub_uri);
     array_shift($sub_uri);
-    $sub_id = array_pop($oo->urls_to_ids($sub_uri));
+    $temp = $oo->urls_to_ids($sub_uri);
+    $sub_id = array_pop($temp);
     $sub = $oo->get($sub_id);
     $sub_media = $oo->media($sub['id']);
     $sub_children = $oo->children($sub['id']);
     foreach($sub_children as $key => $child)
         if(substr($child['name1'], 0, 1) == '.')
-            unset($sesson_children[$key]);
-    $events = ($uri[3] == 'events');
-    $readings = ($uri[3] == 'reading');
-    $images = ($uri[3] == 'images');
-    $videos = ($uri[3] == 'videos');
+            unset($sub_children[$key]);
+    $events = isset($uri[3]) && ($uri[3] == 'events');
+    $readings = isset($uri[3]) && ($uri[3] == 'reading');
+    $images = isset($uri[3]) && ($uri[3] == 'images');
+    $videos = isset($uri[3]) && ($uri[3] == 'videos');
 }
 
 ?><div id='fullwindow'>
@@ -38,7 +39,7 @@ if ($season || $seasons){
         <div id='content'><?
             ?><div id='content-text' class='palatino'><?
                 if ($season) {
-                    if (($readings || $events) && $uri[4]) {
+                    if (($readings || $events) && isset($uri[4])) {
                         ?><div id='name'>
                             <a class="list-child-link" href = ''>
 							    <?= $name; ?>
@@ -52,15 +53,19 @@ if ($season || $seasons){
                             echo $body;
                         ?></div><?
                         foreach ($media as $m) {
-                            ?><img class="" src = '<?= m_url($m); ?>' alt = '<?= $m['caption']; ?>'>
-                            <div class='captionContainer'>
-                                <div class='caption euler'>
-                                    <?= $m['caption']; ?>
-                                </div>
-                            </div><?
+                            $caption = $m['caption'];
+                            if(strpos($caption, '[hidden]') === false)
+                            {
+                                ?><img class="" src = '<?= m_url($m); ?>' alt = '<?= $m['caption']; ?>'>
+                                <div class='captionContainer'>
+                                    <div class='caption euler'>
+                                        <?= $m['caption']; ?>
+                                    </div>
+                                </div><?
+                            }
                         }
                         ?></div><?
-                    } else if ($season && !$uri[3]) {
+                    } else if ($season && !isset($uri[3])) {
                         ?><div class = 'list-child'>
                             <a class="list-child-link" href = '<?= $url; ?>'>
                                 Season <?= $sub['name1']; ?>
@@ -131,7 +136,7 @@ if ($season || $seasons){
                                     if ($video)
                                         $child_video = $child['body'];
                                 }
-                                if ($child_video){
+                                if (isset($child_video)){
                                     ?><div class = 'title'>
                                         <a class="list-child-link" href = '<?= $url; ?>'>
 		            					    <?= $title; ?>
